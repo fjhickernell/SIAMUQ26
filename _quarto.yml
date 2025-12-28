@@ -1,0 +1,17 @@
+project:
+  type: website
+
+website:
+  title: "SIAM UQ 2026"
+  navbar:
+    left:
+      - href: slides/intro.qmd
+        text: Slides
+
+format:
+  html:
+    toc: true
+
+execute:
+  warning: false
+  message: false

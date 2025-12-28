@@ -1,0 +1,9 @@
+format:
+  revealjs:
+    navigation-mode: grid
+    controls: true
+    slide-number: true
+    center: false
+execute:
+  warning: false
+  message: false
