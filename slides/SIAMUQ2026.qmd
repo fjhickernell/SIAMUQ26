@@ -1,0 +1,26 @@
+---
+title: ""
+---
+
+# Low Discrepancy Drop-In Replacements for IID {.title-slide .iit-skyline-title data-background-image="classlib/classlib/quarto/assets/images/campus/IllinoisTech_MiesCampus.jpg" data-background-size="cover" data-background-position="center center"}
+
+::: {.author}
+Fred J. Hickernell
+:::
+
+::: {.institute}
+Illinois Institute of Technology
+:::
+
+::: {.collaborators}
+Joint work with: ...
+:::
+
+::: {.funding}
+Supported in part by ...
+:::
+
+::: {.slides-link}
+[Slides](https://...)
+:::
+

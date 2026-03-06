@@ -1,9 +1,14 @@
+metadata-files:
+  - ../classlib/classlib/quarto/slides/research/research-slides.yml
+
 format:
   revealjs:
     navigation-mode: grid
     controls: true
     slide-number: true
     center: false
+
 execute:
   warning: false
   message: false
+  
