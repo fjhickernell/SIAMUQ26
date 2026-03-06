@@ -6,3 +6,10 @@ _freeze/
 **/*.quarto_ipynb
 
 /.quarto/
+
+
+.quarto-watch-logs/
+slides/_site/
+slides/_freeze/
+slides/.quarto/
+slides/*_files/
