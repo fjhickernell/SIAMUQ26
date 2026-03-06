@@ -5,15 +5,11 @@ title: ""
 # Low Discrepancy Drop-In Replacements for IID {.title-slide .iit-skyline-title data-background-image="classlib/classlib/quarto/assets/images/campus/IllinoisTech_MiesCampus.jpg" data-background-size="cover" data-background-position="center center"}
 
 ::: {.author}
-Fred J. Hickernell
-:::
-
-::: {.institute}
-Illinois Institute of Technology
+<span class="speaker">Fred J. Hickernell</span>, <span class="affiliation">Illinois Institute of Technology</span>, <span class="email">hickernell@illinoistech.edu</span>
 :::
 
 ::: {.collaborators}
-Joint work with: ...
+Joint work with: Claude Hall, Jr., Jimmy Nguyen, Alexander Pride, Aleksei G. Sorokin
 :::
 
 ::: {.funding}
@@ -23,4 +19,3 @@ Supported in part by ...
 ::: {.slides-link}
 [Slides](https://...)
 :::
-
