@@ -1,11 +1,12 @@
 project:
   type: website
+  output-dir: _site
 
 website:
   title: "SIAM UQ 2026"
   navbar:
     left:
-      - href: slides/intro.qmd
+      - href: slides/intro.html
         text: Slides
 
 format:
@@ -15,3 +16,5 @@ format:
 execute:
   warning: false
   message: false
+
+  
