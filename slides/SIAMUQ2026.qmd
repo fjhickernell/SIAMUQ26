@@ -22,11 +22,33 @@ Supported in part by NSF-DMS-#2316011
 :::
 :::
 
-# Introduction
+# What quasi-Monte Carlo (QMC) does
 
-Here is some text
+:::{.columns}
+::: {.column width="50%"}
+
+For $\vx_1, \ldots, \vx_n \IIDsim \Unif[0,1]^d$
+\begin{multline*}
+\sqrt{\Ex\left[ \left( \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac{1}{n} \sum_{i=1}^n f(\vx_i) \right)^2 \right]} \\
+= \frac{\std(f)}{\alert{\sqrt{n}}}
+\end{multline*}
+
+:::
+
+::: {.column width="50%"}
+
+For carefully chosen $\vx_1, \ldots, \vx_n \LDsim \Unif[0,1]^d$
+$$
+\left \lvert \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac{1}{n} \sum_{i=1}^n f(\vx_i) \right \rvert  = \underbrace{D(\{\vx_i\}_{i=1}^n)}_{\Order(\alert{n^{-1+\delta}})} \cdot V(f)
+$$
+:::
+
+:::
 
 
-## Sub-introduction
 
-And some more text
+## Problem
+
+- Although IID random sequences are extensible
+
+- 
