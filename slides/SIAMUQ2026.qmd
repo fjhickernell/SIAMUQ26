@@ -2,20 +2,31 @@
 title: ""
 ---
 
-# Low Discrepancy Drop-In Replacements for IID {.title-slide .iit-skyline-title data-background-image="classlib/classlib/quarto/assets/images/campus/IllinoisTech_MiesCampus.jpg" data-background-size="cover" data-background-position="center center"}
+# Low Discrepancy Drop-In Replacements for IID {#research-title-slide .title-slide .iit-skyline-title data-background-image="classlib/classlib/quarto/assets/images/campus/IllinoisTech_MiesCampus.jpg" data-background-size="cover" data-background-position="center center"}
 
+::: {.title-stack}
 ::: {.author}
 <span class="speaker">Fred J. Hickernell</span>, <span class="affiliation">Illinois Institute of Technology</span>, <span class="email">hickernell@illinoistech.edu</span>
 :::
 
 ::: {.collaborators}
-Joint work with: Claude Hall, Jr., Jimmy Nguyen, Alexander Pride, Aleksei G. Sorokin
+Joint work with Claude Hall, Jr., Jimmy Nguyen, Alexander Pride, Aleksei G. Sorokin, and the [qmcpy]{.pkg} development team
 :::
 
 ::: {.funding}
-Supported in part by ...
+Supported in part by NSF-DMS-#2316011
 :::
 
 ::: {.slides-link}
-[Slides](https://...)
+[Slides at https://fjhickernell.github.io/SIAMUQ2026/slides/SIAMUQ2026.html](https://fjhickernell.github.io/SIAMUQ2026/slides/SIAMUQ2026.html)
 :::
+:::
+
+# Introduction
+
+Here is some text
+
+
+## Sub-introduction
+
+And some more text
