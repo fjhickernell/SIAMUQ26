@@ -1,6 +1,8 @@
 metadata-files:
   - ../classlib/classlib/quarto/slides/research/research-slides.yml
 
+course_website: "https://fjhickernell.github.io/SIAMUQ26/"
+
 format:
   revealjs: {}
 

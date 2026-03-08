@@ -3,6 +3,9 @@ project:
   output-dir: _site
   render:
     - index.qmd
+  resources:
+    - classlib/classlib/quarto/assets/**/*
+    - classlib/classlib/notebooks/**/*
 
 website:
   title: "SIAM UQ 2026"
@@ -10,7 +13,7 @@ website:
     left:
       - href: index.html
         text: Home
-      - href: slides/intro.html
+      - href: slides/SIAMUQ2026.html
         text: Slides
     right:
       - icon: github
