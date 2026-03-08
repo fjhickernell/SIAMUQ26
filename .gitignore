@@ -23,3 +23,5 @@ slides/.quarto/
 # Logs
 *.log
 
+
+/.quarto/
