@@ -1,0 +1,41 @@
+---
+title: "SIAM UQ 2026"
+format: html
+---
+
+## Talk
+
+### Randomized Quasi-Monte Carlo: Theory and Practice
+
+Fred J. Hickernell  
+Illinois Institute of Technology
+
+---
+
+## Slides
+
+The slides for this talk are available here:
+
+[View Slides](slides/intro.html)
+
+---
+
+## Abstract
+
+Randomized quasi-Monte Carlo (RQMC) methods combine the variance reduction
+properties of quasi-Monte Carlo with the statistical error estimation
+capabilities of Monte Carlo methods.
+
+These techniques have become an important tool for high-dimensional numerical
+integration and uncertainty quantification.
+
+This talk discusses theoretical foundations and practical implementation of
+RQMC methods together with examples from recent applications.
+
+---
+
+## Repository
+
+The full source for the slides is available at
+
+https://github.com/fjhickernell/SIAMUQ26
