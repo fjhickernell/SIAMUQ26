@@ -8,7 +8,7 @@ SIAM Conference on Uncertainty Quantification (UQ) 2026.
 
 The slides are available online:
 
-https://fjhickernell.github.io/SIAMUQ26/slides/intro.html
+https://fjhickernell.github.io/SIAMUQ26/slides/SIAMUQ2026.html
 
 They are written using Quarto and RevealJS.
 
