@@ -1,30 +1,22 @@
 ---
-title: ""
-title-slide-attributes:
-  data-background-image: "https://fjhickernell.github.io/SIAMUQ2026/classlib/classlib/quarto/assets/images/campus/IllinoisTech_MiesCampus.jpg"
-  data-background-size: cover
-  data-background-position: center center
+title: "Low Discrepancy Drop-In Replacements for IID"
+author: "Fred J. Hickernell"
+subtitle: |
+  Illinois Institute of Technology, hickernell@illinoistech.edu
+
+  March 23, 2026
+
+  Joint work with Claude Hall, Jr., Jimmy Nguyen, Alexander Pride, Aleksei G. Sorokin, and the <span class="pkg">qmcpy</span> development team
+
+  Supported in part by NSF-DMS-2316011
+
+  [Slides](https://fjhickernell.github.io/SIAMUQ2026/slides/SIAMUQ2026.html)
+date: ""
+
+metadata-files:
+  - ../classlib/classlib/quarto/slides/research/research-slides.yml
 ---
 
-# Low Discrepancy Drop-In Replacements for IID {#research-title-slide .title-slide .iit-skyline-title background-image="https://fjhickernell.github.io/SIAMUQ2026/classlib/classlib/quarto/assets/images/campus/IllinoisTech_MiesCampus.jpg" background-size="cover" background-position="center center"}
-
-::: {.title-stack}
-::: {.author}
-<span class="speaker">Fred J. Hickernell</span>, <span class="affiliation">Illinois Institute of Technology</span>, <span class="email">hickernell@illinoistech.edu</span>
-:::
-
-::: {.collaborators}
-Joint work with Claude Hall, Jr., Jimmy Nguyen, Alexander Pride, Aleksei G. Sorokin, and the [qmcpy]{.pkg} development team
-:::
-
-::: {.funding}
-Supported in part by NSF-DMS-#2316011
-:::
-
-::: {.slides-link}
-[Slides at https://fjhickernell.github.io/SIAMUQ2026/slides/SIAMUQ2026.html](https://fjhickernell.github.io/SIAMUQ2026/slides/SIAMUQ2026.html)
-:::
-:::
 
 # What quasi-Monte Carlo (QMC) does
 
