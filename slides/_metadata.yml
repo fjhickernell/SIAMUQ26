@@ -1,9 +1,0 @@
-metadata-files:
-  - ../classlib/classlib/quarto/slides/research/research-slides.yml
-
-format:
-  revealjs: {}
-
-execute:
-  warning: false
-  message: false
