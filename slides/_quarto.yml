@@ -4,6 +4,7 @@ project:
   render:
     - "*.qmd"
   resources:
+    - ../classlib/classlib/quarto/assets/images/campus/IllinoisTech_MiesCampus_slide.jpg
     - ../classlib/**/*
 
 execute:
