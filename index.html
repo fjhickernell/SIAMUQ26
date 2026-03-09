@@ -70,15 +70,20 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="classlib/classlib/quarto/website/hickernell-website.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./classlib/classlib/quarto/assets/images/normal-scatter.png" alt="" class="navbar-logo light-content">
+    <img src="./classlib/classlib/quarto/assets/images/normal-scatter.png" alt="" class="navbar-logo dark-content">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">SIAM UQ 2026</span>
     </a>
@@ -99,6 +104,10 @@ ul.task-list li input[type="checkbox"] {
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://qmcpy.org"> 
+<span class="menu-text">QMCPy</span></a>
+  </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/fjhickernell/SIAMUQ26"> <i class="bi bi-github" role="img">
 </i> 
@@ -115,21 +124,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#talk" id="toc-talk" class="nav-link active" data-scroll-target="#talk">Talk</a>
-  <ul class="collapse">
-  <li><a href="#randomized-quasi-monte-carlo-theory-and-practice" id="toc-randomized-quasi-monte-carlo-theory-and-practice" class="nav-link" data-scroll-target="#randomized-quasi-monte-carlo-theory-and-practice">Randomized Quasi-Monte Carlo: Theory and Practice</a></li>
-  </ul></li>
-  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
-  <li><a href="#abstract" id="toc-abstract" class="nav-link" data-scroll-target="#abstract">Abstract</a></li>
-  <li><a href="#repository" id="toc-repository" class="nav-link" data-scroll-target="#repository">Repository</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -152,34 +147,33 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="talk" class="level2">
-<h2 class="anchored" data-anchor-id="talk">Talk</h2>
-<section id="randomized-quasi-monte-carlo-theory-and-practice" class="level3">
-<h3 class="anchored" data-anchor-id="randomized-quasi-monte-carlo-theory-and-practice">Randomized Quasi-Monte Carlo: Theory and Practice</h3>
+<section id="low-discrepancy-drop-in-replacements-for-iid" class="level1">
+<h1>Low Discrepancy Drop-In Replacements for IID</h1>
 <p>Fred J. Hickernell<br>
 Illinois Institute of Technology</p>
-<hr>
-</section>
-</section>
 <section id="slides" class="level2">
 <h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<p>The slides for this talk are available here:</p>
-<p><a href="slides/intro.html">View Slides</a></p>
-<hr>
+<ul>
+<li><a href="slides/SIAMUQ2026.html">View slides</a></li>
+</ul>
+</section>
+<section id="conference" class="level2">
+<h2 class="anchored" data-anchor-id="conference">Conference</h2>
+<p>SIAM Conference on Uncertainty Quantification (UQ) 2026</p>
 </section>
 <section id="abstract" class="level2">
 <h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
-<p>Randomized quasi-Monte Carlo (RQMC) methods combine the variance reduction properties of quasi-Monte Carlo with the statistical error estimation capabilities of Monte Carlo methods.</p>
-<p>These techniques have become an important tool for high-dimensional numerical integration and uncertainty quantification.</p>
-<p>This talk discusses theoretical foundations and practical implementation of RQMC methods together with examples from recent applications.</p>
-<hr>
+<p>Low-discrepancy sequences are deterministic point sets designed to improve upon ordinary IID sampling for numerical integration. This talk discusses how they can serve as effective drop-in replacements for IID sampling in important computational settings.</p>
 </section>
 <section id="repository" class="level2">
 <h2 class="anchored" data-anchor-id="repository">Repository</h2>
-<p>The full source for the slides is available at</p>
-<p>https://github.com/fjhickernell/SIAMUQ26</p>
+<ul>
+<li><a href="https://github.com/fjhickernell/SIAMUQ26">SIAMUQ26 on GitHub</a></li>
+<li><a href="https://qmcpy.org">QMCPy</a></li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -270,6 +264,11 @@ Illinois Institute of Technology</p>
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -584,6 +583,19 @@ Illinois Institute of Technology</p>
   });
   </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Fred J. Hickernell · Illinois Institute of Technology</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 

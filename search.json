@@ -4,34 +4,34 @@
     "href": "index.html",
     "title": "SIAM UQ 2026",
     "section": "",
-    "text": "Fred J. Hickernell\nIllinois Institute of Technology"
-  },
-  {
-    "objectID": "index.html#talk",
-    "href": "index.html#talk",
-    "title": "SIAM UQ 2026",
-    "section": "",
-    "text": "Fred J. Hickernell\nIllinois Institute of Technology"
+    "text": "Fred J. Hickernell\nIllinois Institute of Technology\n\n\n\nView slides\n\n\n\n\nSIAM Conference on Uncertainty Quantification (UQ) 2026\n\n\n\nLow-discrepancy sequences are deterministic point sets designed to improve upon ordinary IID sampling for numerical integration. This talk discusses how they can serve as effective drop-in replacements for IID sampling in important computational settings.\n\n\n\n\nSIAMUQ26 on GitHub\nQMCPy"
   },
   {
     "objectID": "index.html#slides",
     "href": "index.html#slides",
     "title": "SIAM UQ 2026",
-    "section": "Slides",
-    "text": "Slides\nThe slides for this talk are available here:\nView Slides"
+    "section": "",
+    "text": "View slides"
+  },
+  {
+    "objectID": "index.html#conference",
+    "href": "index.html#conference",
+    "title": "SIAM UQ 2026",
+    "section": "",
+    "text": "SIAM Conference on Uncertainty Quantification (UQ) 2026"
   },
   {
     "objectID": "index.html#abstract",
     "href": "index.html#abstract",
     "title": "SIAM UQ 2026",
-    "section": "Abstract",
-    "text": "Abstract\nRandomized quasi-Monte Carlo (RQMC) methods combine the variance reduction properties of quasi-Monte Carlo with the statistical error estimation capabilities of Monte Carlo methods.\nThese techniques have become an important tool for high-dimensional numerical integration and uncertainty quantification.\nThis talk discusses theoretical foundations and practical implementation of RQMC methods together with examples from recent applications."
+    "section": "",
+    "text": "Low-discrepancy sequences are deterministic point sets designed to improve upon ordinary IID sampling for numerical integration. This talk discusses how they can serve as effective drop-in replacements for IID sampling in important computational settings."
   },
   {
     "objectID": "index.html#repository",
     "href": "index.html#repository",
     "title": "SIAM UQ 2026",
-    "section": "Repository",
-    "text": "Repository\nThe full source for the slides is available at\nhttps://github.com/fjhickernell/SIAMUQ26"
+    "section": "",
+    "text": "SIAMUQ26 on GitHub\nQMCPy"
   }
 ]
