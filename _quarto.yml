@@ -16,6 +16,7 @@ format:
     toc: false
 
 metadata-files:
+  - classlib/classlib/quarto/website/hickernell-website.yml
   - classlib/classlib/quarto/metadata/hickernell-texts.yml
 
 website:

@@ -25,3 +25,5 @@ slides/.quarto/
 
 
 /.quarto/
+
+.gha-venv/
