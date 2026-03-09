@@ -10,8 +10,8 @@ subtitle: |
 
   Supported in part by NSF-DMS-2316011
 
-  [Slides](https://fjhickernell.github.io/SIAMUQ2026/slides/SIAMUQ2026.html)
-date: ""
+  [Link to slides](https://fjhickernell.github.io/SIAMUQ26/slides/SIAMUQ2026.html)
+date: "March 23, 2026"
 
 metadata-files:
   - ../classlib/classlib/quarto/slides/research/research-slides.yml

@@ -1,41 +1,25 @@
 ---
 title: "SIAM UQ 2026"
-format: html
 ---
 
-## Talk
-
-### Randomized Quasi-Monte Carlo: Theory and Practice
+# Low Discrepancy Drop-In Replacements for IID
 
 Fred J. Hickernell  
 Illinois Institute of Technology
 
----
-
 ## Slides
 
-The slides for this talk are available here:
+- [View slides](slides/SIAMUQ2026.html)
 
-[View Slides](slides/intro.html)
+## Conference
 
----
+SIAM Conference on Uncertainty Quantification (UQ) 2026
 
 ## Abstract
 
-Randomized quasi-Monte Carlo (RQMC) methods combine the variance reduction
-properties of quasi-Monte Carlo with the statistical error estimation
-capabilities of Monte Carlo methods.
-
-These techniques have become an important tool for high-dimensional numerical
-integration and uncertainty quantification.
-
-This talk discusses theoretical foundations and practical implementation of
-RQMC methods together with examples from recent applications.
-
----
+Low-discrepancy sequences are deterministic point sets designed to improve upon ordinary IID sampling for numerical integration. This talk discusses how they can serve as effective drop-in replacements for IID sampling in important computational settings.
 
 ## Repository
 
-The full source for the slides is available at
-
-https://github.com/fjhickernell/SIAMUQ26
+- [SIAMUQ26 on GitHub](https://github.com/fjhickernell/SIAMUQ26)
+- [QMCPy](https://qmcpy.org)
