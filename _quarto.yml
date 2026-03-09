@@ -12,8 +12,9 @@ format:
   html:
     css:
       - classlib/classlib/quarto/website/hickernell-website.css
+    include-in-header:
+      - classlib/classlib/quarto/slides/hickernell-latex-macros.js
     link-external-newwindow: true
-    toc: false
 
 metadata-files:
   - classlib/classlib/quarto/website/hickernell-website.yml

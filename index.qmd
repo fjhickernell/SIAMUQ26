@@ -10,17 +10,21 @@ title-block-banner: false
 Fred J. Hickernell  
 Illinois Institute of Technology
 
-### Slides
+### Abstract
 
-- [View slides](slides/SIAMUQ2026.html)
+Low discrepancy (LD) sequences facilitate faster convergence for computing expectations or integrals of high dimensional functions. Unfortunately, the best low discrepancy sequences have preferred sample sizes, $n$, such as integer powers of 2. This may be inconvenient for practitioners who are accustomed to using independent and identically distributed (IID) samples that have no restrictions on $n$.
+
+This talk describes recent work on lattice, Kronecker, and other LD sequences where the $n$ may be any positive integer, and the dimension, $d$, is also allowed to be of arbitrary size. We use component-by-component constructions based on a figure of merit that includes the discrepancies for all values of $n$ up to a maximum value, $N$. Because these discrepancies are based on carefully chosen kernels, the cost of the constructions is at most $\Order(dN \log(N))$.
+
+### [Slides](slides/SIAMUQ2026.html)
+
 
 ### Conference
 
-SIAM Conference on Uncertainty Quantification (UQ) 2026
+- [SIAM Conference on Uncertainty Quantification (UQ26)](https://www.siam.org/conferences-events/siam-conferences/uq26/)
+- [March 23, 2026 Special Session in program](https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=86001)
 
-### Abstract
 
-Low-discrepancy sequences are deterministic point sets designed to improve upon ordinary IID sampling for numerical integration. This talk discusses how they can serve as effective drop-in replacements for IID sampling in important computational settings.
 
 ### Repository
 
