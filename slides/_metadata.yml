@@ -6,6 +6,3 @@ course_website: "https://fjhickernell.github.io/SIAMUQ26/"
 format:
   revealjs: {}
 
-execute:
-  warning: false
-  message: false
