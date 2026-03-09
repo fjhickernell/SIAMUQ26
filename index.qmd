@@ -1,25 +1,28 @@
 ---
 title: "SIAM UQ 2026"
+metadata-files:
+  - classlib/classlib/quarto/website/hickernell-website.yml
+title-block-banner: false
 ---
 
-# Low Discrepancy Drop-In Replacements for IID
+## Low Discrepancy Drop-In Replacements for IID
 
 Fred J. Hickernell  
 Illinois Institute of Technology
 
-## Slides
+### Slides
 
 - [View slides](slides/SIAMUQ2026.html)
 
-## Conference
+### Conference
 
 SIAM Conference on Uncertainty Quantification (UQ) 2026
 
-## Abstract
+### Abstract
 
 Low-discrepancy sequences are deterministic point sets designed to improve upon ordinary IID sampling for numerical integration. This talk discusses how they can serve as effective drop-in replacements for IID sampling in important computational settings.
 
-## Repository
+### Repository
 
 - [SIAMUQ26 on GitHub](https://github.com/fjhickernell/SIAMUQ26)
 - [QMCPy](https://qmcpy.org)
