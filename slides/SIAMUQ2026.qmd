@@ -4,14 +4,15 @@ author: "Fred J. Hickernell"
 subtitle: |
   Illinois Institute of Technology, hickernell@illinoistech.edu
 
-  March 23, 2026
-
   Joint work with Claude Hall, Jr., Jimmy Nguyen, Alexander Pride, Aleksei G. Sorokin, and the <span class="pkg">qmcpy</span> development team
 
-  Supported in part by NSF-DMS-2316011
+  Supported in part by NSF-DMS-2316011 &nbsp; &nbsp; Thanks to the organizers
 
-  [Link to slides](https://fjhickernell.github.io/SIAMUQ26/slides/SIAMUQ2026.html)
-date: "March 23, 2026"
+  SIAM Conference on Uncertainty Quantification (UQ26), Minneapolis, MN
+
+  🔗 Slides: fjhickernell.github.io/SIAMUQ26/slides/SIAMUQ2026.html
+date: 2026-03-23
+date-format: "MMMM D, YYYY"
 
 metadata-files:
   - ../classlib/classlib/quarto/slides/research/research-slides.yml
