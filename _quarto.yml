@@ -27,11 +27,15 @@ website:
         text: Home
       - href: slides/SIAMUQ2026.html
         text: Slides
+
     right:
-      - text: QMCPy
-        href: https://qmcpy.org
-      - icon: github
-        href: https://github.com/fjhickernell/SIAMUQ26
+      - text: Related
+        menu:
+          - text: Talk Repository
+            icon: github
+            href: https://github.com/fjhickernell/SIAMUQ26
+          - text: QMCPy
+            href: https://qmcpy.org
 
   page-footer:
     left: "© 2026 Fred J. Hickernell · Illinois Institute of Technology"
