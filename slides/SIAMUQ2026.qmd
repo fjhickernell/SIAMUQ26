@@ -33,9 +33,9 @@ format:
 
 ::: {.column width="49%"}
 
-For $\vx_1, \vx_2, \ldots \IIDsim \Unif[0,1]^d$
+For $\vx_0, \vx_1, \ldots \IIDsim \Unif[0,1]^d$
 \begin{multline*}
-\sqrt{\Ex\left[ \left( \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac{1}{n} \sum_{i=1}^n f(\vx_i) \right)^2 \right]} \\
+\sqrt{\Ex\left[ \left( \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac{1}{n} \sum_{i=0}^{n-1} f(\vx_i) \right)^2 \right]} \\
 = \frac{\std(f)}{\alert{\sqrt{n}}}
 \end{multline*}
 
@@ -47,10 +47,10 @@ For $\vx_1, \vx_2, \ldots \IIDsim \Unif[0,1]^d$
 
 ::: {.column width="49%"}
 
-For [carefully]{.alert} chosen $\vx_1, \vx_2, \ldots \LDsim \Unif[0,1]^d$
+For [carefully]{.alert} chosen $\vx_0, \vx_1, \ldots \LDsim \Unif[0,1]^d$
 \begin{multline*}
-\left\lvert \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac{1}{n} \sum_{i=1}^n f(\vx_i) \right\rvert
-\\ = \underbracket{\Dsc(\{\vx_i\}_{i=1}^n)}_{\Order(\alert{n^{-1+\delta}})} \, \Vtn(f)
+\left\lvert \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac{1}{n} \sum_{i=0}^{n-1} f(\vx_i) \right\rvert
+\\ = \underbracket{\Dsc(\{\vx_i\}_{i=0}^{n-1})}_{\Order(\alert{n^{-1+\delta}}) \text{ or better}} \, \Vtn(f)
 \end{multline*}
 
 :::
@@ -157,3 +157,5 @@ fig.tight_layout()
 - Need new constructions, error bounds, and stopping criteria
 
 :::
+
+## The sad and thrilling story of the missing, $\vx_0$
