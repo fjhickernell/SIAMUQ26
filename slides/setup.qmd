@@ -3,6 +3,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 import scipy as sp
 import scipy.stats as stats
 import classlib as cl
@@ -11,7 +12,8 @@ import qmcpy as qp
 
 rng = np.random.default_rng(20251222)
 
-#nb.init(use_tex=True)
+nb.init(use_tex=False)
+mpl.rcParams["text.usetex"] = False
 colors = nb.TOL_BRIGHT
 
 d = 13
