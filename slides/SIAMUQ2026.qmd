@@ -114,9 +114,13 @@ fig.tight_layout()
 
 ## Problem
 
-- Although IID random sequences are extensible
+- IID random sequences are [extensible]{.alert} — pause at any $n$ you like and add more points as needed
+  - BUT convergence is slow: $\Order(n^{-1/2})$
 
-- ...
+- LD sequences can converge faster: $\Order(n^{-1+\delta})$ for any $\delta > 0$
+  - BUT they are normally _not_ easily extensible in $n$
+    - Lattices: $n = 1, b, b^2, \ldots$ for some base $b$
+    - Digital nets: $n = 1, b, b^2, \ldots$ for some base $b$
 
 
 
