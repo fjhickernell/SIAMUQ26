@@ -12,8 +12,7 @@ import qmcpy as qp
 
 rng = np.random.default_rng(20251222)
 
-nb.init(use_tex=False)
-mpl.rcParams["text.usetex"] = False
+nb.init(use_tex=True)
 colors = nb.TOL_BRIGHT
 
 d = 13

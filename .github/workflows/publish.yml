@@ -28,6 +28,16 @@ jobs:
           python-version: "3.12"
           cache: pip
 
+      - name: Install LaTeX for matplotlib usetex
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            texlive-latex-base \
+            texlive-latex-recommended \
+            texlive-fonts-recommended \
+            dvipng \
+            ghostscript
+
       - name: Set RETICULATE_PYTHON
         run: |
           echo "RETICULATE_PYTHON=$pythonLocation/bin/python" >> "$GITHUB_ENV"
@@ -69,3 +79,4 @@ jobs:
           render: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
