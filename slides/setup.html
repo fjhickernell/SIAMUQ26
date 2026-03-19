@@ -1259,7 +1259,7 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 
 <section class="slide level2">
 
-<div id="b8f24b2c" class="cell" data-execution_count="1">
+<div id="feaa4b01" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 
     <style id="nbviz-highlight">
@@ -2567,6 +2567,19 @@ window.QuartoSupport = function () {
         }
 
         window.addEventListener("hashchange", function () { snapTopIfNeeded("hashchange"); });
+
+        // Safari/WebKit occasionally fails to repaint Reveal slides after focus returns.
+        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        if (isSafari) {
+          window.addEventListener("focus", function () {
+            const slides = document.querySelector(".reveal .slides");
+            if (!slides) return;
+            slides.style.opacity = "0.999";
+            void slides.offsetHeight;
+            slides.style.opacity = "";
+            if (window.Reveal && Reveal.layout) Reveal.layout();
+          });
+        }
 
         return true;
       }
