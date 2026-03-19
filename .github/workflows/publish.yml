@@ -34,9 +34,11 @@ jobs:
           sudo apt-get install -y \
             texlive-latex-base \
             texlive-latex-recommended \
+            texlive-latex-extra \
             texlive-fonts-recommended \
             dvipng \
-            ghostscript
+            ghostscript \
+            cm-super
 
       - name: Set RETICULATE_PYTHON
         run: |
@@ -79,4 +81,3 @@ jobs:
           render: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          

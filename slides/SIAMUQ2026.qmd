@@ -141,14 +141,19 @@ fig.tight_layout()
 
 - BUT 
     - Normally _not_ easily extensible in $n$
-      - Lattices: $n = 1, b, b^2, \ldots$ for some base $b$
-      - Digital nets: $n = 1, b, b^2, \ldots$ for some base $b$
+      - [Lattices]{.alert}: $n = 1, b, b^2, \ldots$ 
+      - Digital nets: $n = 1, b, b^2, \ldots$ 
+      - Halton: $n = 1, 2, 3, \ldots$ but bad projections in higher dimensions
+      - [Kronecker]{.alert}: $n = 1, 2, 3, \ldots$ less studied
     - _Not_ robust to missing points
-
-
 :::
 :::
 
+::: {.fragment}
 
+### Goal: LD sequences that are also extensible in $n$ and robust to missing points
 
+- Cannot have $\Order(n^{-p})$ convergence with $p > 1$ for all $n$ 
+- Need new constructions, error bounds, and stopping criteria
 
+:::
