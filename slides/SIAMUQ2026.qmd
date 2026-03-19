@@ -159,3 +159,7 @@ fig.tight_layout()
 :::
 
 ## The sad and thrilling story of the missing, $\vx_0$
+
+# The best we can hope for
+
+# What we can do so far
