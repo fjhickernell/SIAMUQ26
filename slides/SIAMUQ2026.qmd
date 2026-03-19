@@ -16,8 +16,16 @@ date-format: "MMMM D, YYYY"
 
 metadata-files:
   - ../classlib/classlib/quarto/slides/research/research-slides.yml
+
+execute:
+  echo: false
+
+format:
+  revealjs:
+    code-overflow: wrap
 ---
 
+{{< include setup.qmd >}}
 
 # What quasi-Monte Carlo (QMC) does
 
@@ -39,11 +47,66 @@ For $\vx_1, \vx_2, \ldots \IIDsim \Unif[0,1]^d$
 
 ::: {.column width="49%"}
 
-For carefully chosen $\vx_1, \vx_2, \ldots \LDsim \Unif[0,1]^d$
+For [carefully]{.alert} chosen $\vx_1, \vx_2, \ldots \LDsim \Unif[0,1]^d$
 \begin{multline*}
 \left\lvert \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac{1}{n} \sum_{i=1}^n f(\vx_i) \right\rvert
 \\ = \underbracket{\Dsc(\{\vx_i\}_{i=1}^n)}_{\Order(\alert{n^{-1+\delta}})} \, \Vtn(f)
 \end{multline*}
+
+:::
+
+:::
+
+:::{.columns}
+
+::: {.column width="49%"}
+
+```{python}
+#| echo: false
+#| fig-width: 4
+#| fig-height: 4
+#| fig-align: center
+n_list = [16, 25, 64]
+fig, ax = qp.plot_proj(
+    qp.IIDStdUniform(d),
+    n=n_list,
+    d_horizontal=d_horiz,
+    d_vertical=d_vert,
+    figfac=4.7,
+    axis_pad=axis_pad,
+    where_title=0.93,
+    marker_size=ms,
+    fig_title=rf"$n = {', '.join(map(str, n_list))}$"
+)
+fig.tight_layout()
+```
+:::
+
+::: {.column width="2%"}
+&nbsp;
+::: 
+
+::: {.column width="49%"} 
+```{python}
+#| echo: false
+#| fig-width: 4
+#| fig-height: 4
+#| fig-align: center
+
+n_list = [16, 25, 64]
+fig, ax = qp.plot_proj(
+    qp.Lattice(d),
+    n=n_list,
+    d_horizontal=d_horiz,
+    d_vertical=d_vert,
+    figfac=4.7,
+    axis_pad=axis_pad,
+    where_title=0.93,
+    marker_size=ms,
+    fig_title=rf"Lattice $n = {', '.join(map(str, n_list))}$"
+)
+fig.tight_layout()
+```
 
 :::
 
