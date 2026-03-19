@@ -25,9 +25,9 @@ format:
     code-overflow: wrap
 ---
 
-{{< include setup.qmd >}}
-
 # What quasi-Monte Carlo (QMC) does
+
+{{< include setup.qmd >}}
 
 :::{.columns}
 
@@ -112,15 +112,43 @@ fig.tight_layout()
 
 :::
 
+
+
 ## Problem
 
-- IID random sequences are [extensible]{.alert} — pause at any $n$ you like and add more points as needed
-  - BUT convergence is slow: $\Order(n^{-1/2})$
+::: {.columns}
 
-- LD sequences can converge faster: $\Order(n^{-1+\delta})$ for any $\delta > 0$
-  - BUT they are normally _not_ easily extensible in $n$
-    - Lattices: $n = 1, b, b^2, \ldots$ for some base $b$
-    - Digital nets: $n = 1, b, b^2, \ldots$ for some base $b$
+::: {.column width="49%"}
+
+### IID random sequences 
+- [Extensible]{.alert}
+  - Pause at any $n$ you like and add more points as needed
+  - No problem if missing a few points here and there
+
+- BUT convergence is [slow]{.alert}: $\Order(n^{-1/2})$
+
+:::
+
+::: {.column width="2%"}
+&nbsp;
+::: 
+
+::: {.column width="49%"}
+
+### Low discrepancy (LD) sequences
+
+- [Faster]{.alert} convergence: $\Order(n^{-1+\delta})$ for any $\delta > 0$
+
+- BUT 
+    - Normally _not_ easily extensible in $n$
+      - Lattices: $n = 1, b, b^2, \ldots$ for some base $b$
+      - Digital nets: $n = 1, b, b^2, \ldots$ for some base $b$
+    - _Not_ robust to missing points
+
+
+:::
+:::
+
 
 
 
