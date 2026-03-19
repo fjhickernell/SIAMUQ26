@@ -151,7 +151,7 @@ fig.tight_layout()
 
 ::: {.fragment}
 
-### Goal: LD sequences that are also extensible in $n$ and robust to missing points
+### Want LD sequences that are _extensible_ in $n$ and _robust_ to missing points
 
 - Cannot have $\Order(n^{-p})$ convergence with $p > 1$ for all $n$ 
 - Need new constructions, error bounds, and stopping criteria
