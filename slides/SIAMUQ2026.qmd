@@ -163,3 +163,12 @@ fig.tight_layout()
 # The best we can hope for
 
 # What we can do so far
+
+# `qmcpy` implementation
+
+`qmcpy` is an open source Python library for quasi-Monte Carlo methods
+
+- Provides implementations of various low discrepancy sequences, including lattice and Kronecker sequences
+- Includes tools for error estimation and stopping criteria
+- <span id="qmcpy-pypi-impact">Loading PyPI impact metric...</span>
+
