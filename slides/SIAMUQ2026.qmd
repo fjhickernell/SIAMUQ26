@@ -50,7 +50,7 @@ For $\vx_0, \vx_1, \ldots \IIDsim \Unif[0,1]^d$
 For [carefully]{.alert} chosen $\vx_0, \vx_1, \ldots \LDsim \Unif[0,1]^d$
 \begin{multline*}
 \left\lvert \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac{1}{n} \sum_{i=0}^{n-1} f(\vx_i) \right\rvert
-\\ = \underbracket{\Dsc(\{\vx_i\}_{i=0}^{n-1})}_{\Order(\alert{n^{-1+\delta}}) \text{ or \class{alert}{better}}} \, \Vtn(f; \cf)
+\\ \le \underbracket{\Dsc(\{\vx_i\}_{i=0}^{n-1})}_{\Order(\alert{n^{-1+\delta}}) \text{ or \class{alert}{better}}} \, \lVert f \rVert_{\cf}
 \end{multline*}
 
 :::
@@ -141,7 +141,7 @@ fig.tight_layout()
 
 - BUT 
     - Normally _not_ easily extensible in $n$
-      - [Lattices]{.alert}: $n = 1, b, b^2, \ldots$ 
+      - [Lattices]{.alert} [{{< meta papers.dickripil_2022_lattice_rules_book.cite >}}]({{< meta papers.dickripil_2022_lattice_rules_book.doi_url >}}): $n = 1, b, b^2, \ldots$ 
       - Digital nets: $n = 1, b, b^2, \ldots$ 
       - Halton: $n = 1, 2, 3, \ldots$ but bad projections in higher dimensions
       - [Kronecker]{.alert}: $n = 1, 2, 3, \ldots$ less studied
@@ -212,29 +212,132 @@ But what if
 
 ::: {.columns}
 
-:::: {.column width="49%"}
+::: {.column width="49%"}
 
-### Lattice sequences
+<h3>Lattice sequences</h3>
 
-::::
-
-:::: {.column width="2%"}
-&nbsp;
-::::
-
-
-:::: {.column width="49%"}  
-
-### Kronecker sequences
-
-::::
+\begin{align*}
+\vx_i &= \phi_b(i) \vzeta + \vDelta \bmod \vone \\
+\boldsymbol{\zeta} & \in \mathbb{N}^d, \quad \boldsymbol{\Delta} \in [0,1)^d\\
+\phi_b\bigl((\cdots i_2 i_1 i_0)_{b} \bigr) & = {}_b0.i_0 i_1 i_2 \cdots 
+\end{align*}
 
 :::
 
-## Weighted discrepancies for all $n \le N$
+::: {.column width="2%"}
+&nbsp;
+:::
+
+
+::: {.column width="49%"}  
+
+<h3>Kronecker sequences</h3>
+
+\begin{align*}
+\boldsymbol{x}_i &= i\boldsymbol{\zeta} + \boldsymbol{\Delta} \bmod \boldsymbol{1} \\
+\boldsymbol{\zeta}, \boldsymbol{\Delta} & \in [0,1)^d\\
+\end{align*}
+
+:::
+
+:::
+
+:::{.columns}
+
+::: {.column width="49%"}
+
+```{python}
+#| echo: false
+#| fig-width: 4
+#| fig-height: 4
+#| fig-align: center
+n_list = [16, 25, 64]
+fig, ax = qp.plot_proj(
+    qp.Lattice(d),
+    n=n_list,
+    d_horizontal=d_horiz,
+    d_vertical=d_vert,
+    figfac=4.7,
+    axis_pad=axis_pad,
+    where_title=0.93,
+    marker_size=ms,
+    fig_title=rf"$n = {', '.join(map(str, n_list))}$"
+)
+fig.tight_layout()
+```
+:::
+
+::: {.column width="2%"}
+&nbsp;
+::: 
+
+::: {.column width="49%"} 
+```{python}
+#| echo: false
+#| fig-width: 4
+#| fig-height: 4
+#| fig-align: center
+n_list.append(97)
+fig, ax = qp.plot_proj(
+    qp.Kronecker(d),
+    n=n_list,
+    d_horizontal=d_horiz,
+    d_vertical=d_vert,
+    figfac=4.7,
+    axis_pad=axis_pad,
+    where_title=0.93,
+    marker_size=ms,
+    fig_title=rf"Kronecker $n = {', '.join(map(str, n_list))}$"
+)
+fig.tight_layout()
+```
+
+:::
+
+:::
+
+## Discrepancies and (weighted) expected squared discrepancies
+\begin{align*}
+\Dsc\bigl (\{\boldsymbol{x}_i\}_{i=0}^{n-1}, \mathcal{F} \bigr) &:= \sup_{\lVert f \rVert_{\cf} \le 1 }\left \lvert \int_{[0,1]^d} f(\boldsymbol{x}) \, \mathrm{d} \boldsymbol{x} - \frac 1n \sum_{i=0}^{n-1} f(\boldsymbol{x}_i) \right \rvert \\
+\Dsc^2\bigl (\{\boldsymbol{x}_i\}_{i=0}^{n-1}, \mathcal{F} \bigr) & = 
+\int_{[0,1]^d \times [0,1]^d} K(\boldsymbol{t}, \boldsymbol{x}) \, \mathrm{d} \boldsymbol{t}  \mathrm{d} \boldsymbol{x}
+- \frac{2}{n} \sum_{i=0}^{n-1} \int_{[0,1]^d} K(\boldsymbol{x}_i, \boldsymbol{x}) \, \mathrm{d} \boldsymbol{x}
++ \frac{1}{n^2} \sum_{i,j=0}^{n-1} K(\boldsymbol{x}_i, \boldsymbol{x}_j)  \\
+& \qquad \qquad \text{where } K \text{ is the reproducing kernel of the Hilbert space } \cf
+\end{align*}
+
+:::{.fragment}
+
+$$
+\ESD \bigl (\{\boldsymbol{x}_i\}_{i=0}^{n-1}, \mathcal{F} \bigr) := \Ex\left[ \Dsc^2\bigl (\{\boldsymbol{x}_i\}_{i=0}^{n-1}, \mathcal{F} \bigr) \right] \qquad 
+\WESD (N,d) := \sum_{n=1}^N n \, \ESD \bigl (\{\boldsymbol{x}_i\}_{i=0}^{n-1}, \mathcal{F} \bigr)
+$$
+
+:::
+
+## (Weighted) expected squared discrepancies for lattice and Kronecker sequences
+
+\begin{align*}
+\textrm{ESD}\bigl (\{\phi_b(i) \vzeta \}_{i=0}^{n-1} \ \class{alert}{\text{lattice}}, \mathcal{F} \bigr)
+& = - \overline{K} + \frac 1{n^2} \biggl [ n \widetilde{K}(\boldsymbol{0}) +  \sum_{k=1}^{b^{\lceil \log_b n\rceil}-1} \#_n(k) \widetilde{K}\bigl( \phi_b(k) \boldsymbol{\zeta}\bigr) \biggr] \\
+\textrm{ESD}\bigl (\{i \vzeta \}_{i=0}^{n-1}\ \class{alert}{\text{Kronecker}}, \mathcal{F} \bigr) 
+& = - \overline{K} + \frac 1{n^2} \biggl [ n \widetilde{K}(\boldsymbol{0}) + 2 \sum_{k=1}^{n -1}(n - k) \widetilde{K}( k \boldsymbol{\zeta}) \biggr] \\
+\widetilde{K}(\boldsymbol{x}) &: = \int_{[0,1]^d} K(\boldsymbol{x} + \boldsymbol{y} \bmod \boldsymbol{1}, 
+\boldsymbol{y}) \, \mathrm{d} \boldsymbol{y} \qquad
+\overline{K} : = \int_{[0,1]^d} \widetilde{K}(\boldsymbol{x}) \, \mathrm{d} \boldsymbol{x}\\
+\#_n(k) &: = \mathrm{card}\bigl \{k : \phi_b(k) = \phi_b(i) - \phi_b(j) \bmod 1 \text{ s.t. } i, j, \in \{0, \ldots, n-1 \} \bigr\} \\
+\WESD (N,d)  & := \sum_{n=1}^N n \, \ESD \bigl (\{\boldsymbol{x}_i\}_{i=0}^{n-1}, \mathcal{F} \bigr) \qquad \text{in } \class{alert}{\Order(N)} \text{ operations}
+\end{align*}
 
 
 ## Component-by-component constructions
+
+1. For $d=1$, choose $\zeta_1$ to minimize $\textrm{WSESD}(N, d)$
+
+2. For $d = 2, \ldots, d_{\max}$, choose $\zeta_d$ to minimize $\textrm{WSESD} (N, d)$, given the previously chosen $\zeta_1, \ldots, \zeta_{d-1}$
+
+
+
 
 
 ## An Asian option example
@@ -257,14 +360,19 @@ But what if
 
 # References
 
-
-
 ::: {.refs}
+
+[{{< meta papers.dickripil_2022_lattice_rules_book.cite >}}]{.ref-label}
+{{< meta papers.dickripil_2022_lattice_rules_book.full >}}
+[DOI]({{< meta papers.dickripil_2022_lattice_rules_book.doi_url >}}) · 
+[publisher]({{< meta papers.dickripil_2022_lattice_rules_book.publisher_url >}}).
+
 
 [{{< meta papers.hickrikuonuy_2012_weighted_integration.cite >}}]{.ref-label}
 {{< meta papers.hickrikuonuy_2012_weighted_integration.full >}}
-[DOI]({{< meta papers.hickrikuonuy_2012_weighted_integration.doi_url >}})
-[publisher]({{< meta papers.hickrikuonuy_2012_weighted_integration.publisher_url >}})
+[DOI]({{< meta papers.hickrikuonuy_2012_weighted_integration.doi_url >}}) ·  
+[publisher]({{< meta papers.hickrikuonuy_2012_weighted_integration.publisher_url >}}).
+
 
 
 
@@ -273,10 +381,12 @@ But what if
 
 # Proofs{#proofs}
 
-Suppse that for a fixed Banach space of integrands, $\cf$, we have bounds on the discrepancy of any $n$-point set, $\{\vt_i\}_{i=0}^{n-1}:
+For a fixed Banach space of integrands, $\cf$, we have bounds on the discrepancy of any $n$-point set, $\{\vt_i\}_{i=0}^{n-1}$:
+
 $$
 0 < a n^{-Q} \le \inf_{\{\vt_i\}_{i=0}^{n-1} \subset [0,1]^d} \Dsc(\{\vt_i\}_{i=0}^{n-1}) \le \sup _{\{\vt_i\}_{i=0}^{n-1} \subset [0,1]^d} \Dsc(\{\vt_i\}_{i=0}^{n-1})\le A, \qquad n = 1, 2, \ldots
 $$
+
 
 And also that for a specific sequence of nodes, $\{\vx_i\}_{i=0}^{\infty}$ and a sequence of sample sizes, $1 \le n_1 < n_2 < \ldots$, we have better bounds on the discrepancy:
 
@@ -285,3 +395,5 @@ c n_k^{-P} \le \Dsc(\{\vx_i\}_{i=0}^{n_k-1}) \le C n_k^{-p} \qquad k = 1, 2, \ld
 $$
 
 where $p \le P \le Q$.
+
+## testing
