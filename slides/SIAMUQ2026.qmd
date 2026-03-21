@@ -330,15 +330,116 @@ $$
 \end{align*}
 
 
-## Component-by-component constructions
+## Component-by-component (CBC) constructions
 
 1. For $d=1$, choose $\zeta_1$ to minimize $\textrm{WSESD}(N, d)$
 
 2. For $d = 2, \ldots, d_{\max}$, choose $\zeta_d$ to minimize $\textrm{WSESD} (N, d)$, given the previously chosen $\zeta_1, \ldots, \zeta_{d-1}$
 
+```{python}
+#| echo: false
+gamma = np.arange(1,d+1)**-2.
+n = 1_000_000
+n_vals = np.arange(1,n+1)
+discIID = np.sqrt((-1+np.prod(1+gamma/6))/n_vals)
+n_which_trend = np.array(n_vals[999:-1])
+```
+
+:::{.fragment}
 
 
+:::{.columns}
 
+::: {.column width="49%"}
+Ours vs IID and CBC by [{{< meta papers.cookuonuy_2006_constructing_embedded.cite >}}]({{< meta papers.cookuonuy_2006_constructing_embedded.doi_url >}})
+```{python}
+#| echo: false
+#| fig-width: 4
+#| fig-height: 4
+#| fig-align: center
+
+CBC_lattice_disc = np.loadtxt("CBC_Disc_d_13_n_1048576.txt",delimiter=",")
+CBC_lattice_disc = CBC_lattice_disc[:n]
+Kuo_lattice_disc = np.loadtxt("Kuo_Disc_d_13_n_1048576.txt",delimiter=",")
+Kuo_lattice_disc = Kuo_lattice_disc[:n]
+
+fig, ax = plt.subplots()
+ax.set_aspect('equal')
+ax.loglog(n_vals,discIID, label = "IID")
+ax.loglog(n_vals,Kuo_lattice_disc, label = "CKN06 CBC")
+ax.loglog(n_vals,CBC_lattice_disc, label = "Our CBC")
+power, coef = nb.plot_log_trend_line(ax, n_vals, CBC_lattice_disc,n_which=n_which_trend)
+powers_of_two_idx = np.array([2**k for k in range(6,20)])-1  #look at preferred n
+power_Kuo, coef_Kuo = nb.plot_log_trend_line(ax, n_vals, Kuo_lattice_disc, n_which=powers_of_two_idx, 
+                                     w=1, endpoints = (1,n))
+ax.loglog(n_vals[powers_of_two_idx],Kuo_lattice_disc[powers_of_two_idx],'.', ms=10, color=nb.TOL_BRIGHT["cyan"])
+
+ax.set_xlabel("$n$")
+ax.set_ylabel("RMS Discrepancy")
+ngamma = 4
+gamma_str = ", ".join(f"{g:.2f}" for g in gamma[:ngamma])
+if len(gamma) > ngamma:
+    gamma_str += ", …"   # ellipsis at the end
+ax.set_title(rf"Lattice, $d = {d}, \boldsymbol{{\gamma}} = ({gamma_str})$")
+ax.set_xlim(1, 1e6) 
+ax.set_ylim(1e-6, 1)
+ax.legend(loc="lower left",fontsize=20)
+fig.tight_layout();
+```
+:::
+
+::: {.column width="2%"}
+&nbsp;
+:::
+
+::: {.column width="49%"}
+
+Ours vs IID, [{{< meta papers.richtmyer_1951_sequences.cite >}}]({{< meta papers.richtmyer_1951_sequences.project_url >}}), and [{{< meta papers.dicgodlarpilsuz_2025_quasi-uniformity.cite >}}]({{< meta papers.dicgodlarpilsuz_2025_quasi-uniformity.doi_url >}})
+```{python}
+#| echo: false
+#| fig-width: 4
+#| fig-height: 4
+#| fig-align: center
+
+Kron_params = {
+    "R51": "Richtmyer",
+    "DGLPS25": "Suzuki",
+    "Our CBC": "CBC"
+}
+
+fig, ax = plt.subplots()
+ax.set_aspect('equal')
+ax.loglog(n_vals,discIID, label = "IID")
+Kron_discrepancies = {}   # dictionary to hold results
+for label, which_alpha in Kron_params.items():
+    disc = qp.Kronecker(dimension = d, generating_vector = which_alpha, 
+                        randomize=False).periodic_discrepancy(n, gamma=gamma)
+    Kron_discrepancies[label] = disc
+    ax.loglog(n_vals, disc, label=f"{label}")
+
+power, coef = nb.plot_log_trend_line(ax, n_vals, Kron_discrepancies["Our CBC"],
+    n_which=n_which_trend)
+    
+ax.set_xlabel("$n$")
+ax.set_ylabel("RMS Discrepancy")
+ngamma = 4
+gamma_str = ", ".join(f"{g:.2f}" for g in gamma[:ngamma])
+if len(gamma) > ngamma:
+    gamma_str += ", …"   # ellipsis at the end
+ax.set_title(rf"Kronecker, $d = {d}, \boldsymbol{{\gamma}} = ({gamma_str})$")
+ax.set_xlim(1, 1e6) 
+ax.set_ylim(1e-6, 1)
+ax.legend(loc="lower left",fontsize=20)
+fig.tight_layout();
+
+```
+
+:::
+
+
+:::
+
+:::
 
 ## An Asian option example
 
@@ -354,6 +455,7 @@ $$
 - Provides implementations of various low discrepancy sequences, including lattice and Kronecker sequences
 - Includes tools for error estimation and stopping criteria
 - <span id="qmcpy-pypi-impact">Loading PyPI impact metric...</span>
+- In active development with contributions from the community
 
 # Further work
 
@@ -362,18 +464,29 @@ $$
 
 ::: {.refs}
 
+[{{< meta papers.cookuonuy_2006_constructing_embedded.cite >}}]{.ref-label}
+{{< meta papers.cookuonuy_2006_constructing_embedded.full >}}
+[DOI]({{< meta papers.cookuonuy_2006_constructing_embedded.doi_url >}}) · 
+[arXiv]({{< meta papers.cookuonuy_2006_constructing_embedded.arxiv_url >}}) · 
+[publisher]({{< meta papers.cookuonuy_2006_constructing_embedded.publisher_url >}}) · 
+[project]({{< meta papers.cookuonuy_2006_constructing_embedded.project_url >}})
+
+
 [{{< meta papers.dickripil_2022_lattice_rules_book.cite >}}]{.ref-label}
 {{< meta papers.dickripil_2022_lattice_rules_book.full >}}
 [DOI]({{< meta papers.dickripil_2022_lattice_rules_book.doi_url >}}) · 
-[publisher]({{< meta papers.dickripil_2022_lattice_rules_book.publisher_url >}}).
+[publisher]({{< meta papers.dickripil_2022_lattice_rules_book.publisher_url >}})
 
 
 [{{< meta papers.hickrikuonuy_2012_weighted_integration.cite >}}]{.ref-label}
 {{< meta papers.hickrikuonuy_2012_weighted_integration.full >}}
 [DOI]({{< meta papers.hickrikuonuy_2012_weighted_integration.doi_url >}}) ·  
-[publisher]({{< meta papers.hickrikuonuy_2012_weighted_integration.publisher_url >}}).
+[publisher]({{< meta papers.hickrikuonuy_2012_weighted_integration.publisher_url >}})
 
 
+[{{< meta papers.richtmyer_1951_sequences.cite >}}]{.ref-label}
+{{< meta papers.richtmyer_1951_sequences.full >}}
+[project]({{< meta papers.richtmyer_1951_sequences.project_url >}})
 
 
 :::
