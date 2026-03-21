@@ -187,7 +187,7 @@ The cure is to [randomize]{.alert} the sequence, not to drop points
 
 - Preserves the structure that allows for error bounds and stopping criteria, especially for Sobol' and lattice sequences for $n = 1, b, b^2, \ldots$
 
-The LD community has tried to influence users and libraries to keep $\vx_0$ in the sequence, [(SciPy, success)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.qmc.Sobol.html) and not to skip points [(MATLAB, not yet succeeded)](https://www.mathworks.com/help/stats/sobolset.html#btd9s8e-1) 
+The LD community urges users and libraries to keep $\vx_0$ in the sequence, [(SciPy, success)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.qmc.Sobol.html) and not to skip points [(MATLAB, not yet succeeded)](https://www.mathworks.com/help/stats/sobolset.html#btd9s8e-1) 
 :::
 
 :::
@@ -205,10 +205,44 @@ But what if
 # The best we can hope for
 
 
-[{{< meta papers.hickritkuonuy_2012_weighted_integration.cite >}}]({{< meta papers.hickritkuonuy_2012_weighted_integration.doi_url >}}) provides a way to handle missing data and stopping criteria for LD sequences
+[{{< meta papers.hickrikuonuy_2012_weighted_integration.cite >}}]({{< meta papers.hickrikuonuy_2012_weighted_integration.doi_url >}}) provides a way to handle missing data and stopping criteria for LD sequences
 
 
 # What we can do so far
+
+::: {.columns}
+
+:::: {.column width="49%"}
+
+### Lattice sequences
+
+::::
+
+:::: {.column width="2%"}
+&nbsp;
+::::
+
+
+:::: {.column width="49%"}  
+
+### Kronecker sequences
+
+::::
+
+:::
+
+## Weighted discrepancies for all $n \le N$
+
+
+## Component-by-component constructions
+
+
+## An Asian option example
+
+
+
+
+
 
 # Implementation
 
@@ -227,10 +261,10 @@ But what if
 
 ::: {.refs}
 
-[{{< meta papers.hickritkuonuy_2012_weighted_integration.cite >}}]{.ref-label}
-{{< meta papers.hickritkuonuy_2012_weighted_integration.full >}}
-[DOI]({{< meta papers.hickritkuonuy_2012_weighted_integration.doi_url >}})
-[publisher]({{< meta papers.hickritkuonuy_2012_weighted_integration.publisher_url >}})
+[{{< meta papers.hickrikuonuy_2012_weighted_integration.cite >}}]{.ref-label}
+{{< meta papers.hickrikuonuy_2012_weighted_integration.full >}}
+[DOI]({{< meta papers.hickrikuonuy_2012_weighted_integration.doi_url >}})
+[publisher]({{< meta papers.hickrikuonuy_2012_weighted_integration.publisher_url >}})
 
 
 
