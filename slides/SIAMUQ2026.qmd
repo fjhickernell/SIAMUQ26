@@ -50,7 +50,7 @@ For $\vx_0, \vx_1, \ldots \IIDsim \Unif[0,1]^d$
 For [carefully]{.alert} chosen $\vx_0, \vx_1, \ldots \LDsim \Unif[0,1]^d$
 \begin{multline*}
 \left\lvert \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac{1}{n} \sum_{i=0}^{n-1} f(\vx_i) \right\rvert
-\\ = \underbracket{\Dsc(\{\vx_i\}_{i=0}^{n-1})}_{\Order(\alert{n^{-1+\delta}}) \text{ or better}} \, \Vtn(f)
+\\ = \underbracket{\Dsc(\{\vx_i\}_{i=0}^{n-1})}_{\Order(\alert{n^{-1+\delta}}) \text{ or \class{alert}{better}}} \, \Vtn(f; \cf)
 \end{multline*}
 
 :::
@@ -160,7 +160,53 @@ fig.tight_layout()
 
 ## The sad and thrilling story of the missing, $\vx_0$
 
+:::{.columns}
+
+::: {.column width="49%"}
+
+### Some libraries/users drop $\vx_0 = (0,\ldots,0)$ in a LD sequence
+
+- $(0,\ldots,0)$ looks too regular
+- Transforming $\LDsim \Unif[0,1]^d$ to $\LDsim\Norm(\vzero,\mI)$ $0 \to -\infty$ 
+
+:::{.fragment}
+The cure is to [randomize]{.alert} the sequence, not to drop points
+:::
+
+:::
+
+::: {.column width="2%"}
+&nbsp;  
+:::
+
+::: {.column width="49%"}
+
+### This is a bad idea; keeping $\vx_0$
+
+- Mainains balance that ensures low discrepancy
+
+- Preserves the structure that allows for error bounds and stopping criteria, especially for Sobol' and lattice sequences for $n = 1, b, b^2, \ldots$
+
+The LD community has tried to influence users and libraries to keep $\vx_0$ in the sequence, [(SciPy, success)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.qmc.Sobol.html) and not to skip points [(MATLAB, not yet succeeded)](https://www.mathworks.com/help/stats/sobolset.html#btd9s8e-1) 
+:::
+
+:::
+
+::: {.fragment}
+But what if 
+
+- There is [missing]{.alert} data, $f(\vx_{i_1}), f(\vx_{i_2}), \ldots, f(\vx_{i_k})$?  
+
+- We [run out of budget]{.alert} before we reach the desired sample size?
+
+:::
+
+
 # The best we can hope for
+
+
+[{{< meta papers.hickritkuonuy_2012_weighted_integration.cite >}}]({{< meta papers.hickritkuonuy_2012_weighted_integration.doi_url >}}) provides a way to handle missing data and stopping criteria for LD sequences
+
 
 # What we can do so far
 
@@ -174,5 +220,21 @@ fig.tight_layout()
 
 # Further work
 
+
 # References
+
+
+
+::: {.refs}
+
+[{{< meta papers.hickritkuonuy_2012_weighted_integration.cite >}}]{.ref-label}
+{{< meta papers.hickritkuonuy_2012_weighted_integration.full >}}
+[DOI]({{< meta papers.hickritkuonuy_2012_weighted_integration.doi_url >}})
+[publisher]({{< meta papers.hickritkuonuy_2012_weighted_integration.publisher_url >}})
+
+
+
+:::
+
+
 
