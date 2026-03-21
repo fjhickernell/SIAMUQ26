@@ -271,4 +271,17 @@ But what if
 :::
 
 
+# Proofs
 
+Suppse that for a fixed Banach space of integrands, $\cf$, we have bounds on the discrepancy of any $n$-point set, $\{\vt_i\}_{i=0}^{n-1}:
+$$
+0 < a n^{-Q} \le \inf_{\{\vt_i\}_{i=0}^{n-1} \subset [0,1]^d} \Dsc(\{\vt_i\}_{i=0}^{n-1}) \le \sup _{\{\vt_i\}_{i=0}^{n-1} \subset [0,1]^d} \Dsc(\{\vt_i\}_{i=0}^{n-1})\le A, \qquad n = 1, 2, \ldots
+$$
+
+And also that for a specific sequence of nodes, $\{\vx_i\}_{i=0}^{\infty}$ and a sequence of sample sizes, $1 \le n_1 < n_2 < \ldots$, we have better bounds on the discrepancy:
+
+$$
+c n_k^{-P} \le \Dsc(\{\vx_i\}_{i=0}^{n_k-1}) \le C n_k^{-p} \qquad k = 1, 2, \ldots
+$$
+
+where $p \le P \le Q$.
