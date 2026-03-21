@@ -271,7 +271,7 @@ But what if
 :::
 
 
-# Proofs
+# Proofs{#proofs}
 
 Suppse that for a fixed Banach space of integrands, $\cf$, we have bounds on the discrepancy of any $n$-point set, $\{\vt_i\}_{i=0}^{n-1}:
 $$
