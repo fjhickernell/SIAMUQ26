@@ -142,8 +142,8 @@ fig.tight_layout()
 - BUT 
     - Normally _not_ easily extensible in $n$
       - [Lattices]{.alert} [{{< meta papers.dickripil_2022_lattice_rules_book.cite >}}]({{< meta papers.dickripil_2022_lattice_rules_book.doi_url >}}): $n = 1, b, b^2, \ldots$ 
-      - Digital nets: $n = 1, b, b^2, \ldots$ 
-      - Halton: $n = 1, 2, 3, \ldots$ but bad projections in higher dimensions
+      - [Digital nets]{.alert} [{{< meta papers.dicpil_2010_digital_nets_sequences.cite >}}]({{< meta papers.dicpil_2010_digital_nets_seqquences.publisher_url >}})  : $n = 1, b, b^2, \ldots$ 
+      - [Halton]{.alert}: $n = 1, 2, 3, \ldots$ but bad projections in higher dimensions
       - [Kronecker]{.alert}: $n = 1, 2, 3, \ldots$ less studied
     - _Not_ robust to missing points
 :::
@@ -169,7 +169,7 @@ fig.tight_layout()
 - $(0,\ldots,0)$ looks too regular
 - Transforming $\LDsim \Unif[0,1]^d$ to $\LDsim\Norm(\vzero,\mI)$ $0 \to -\infty$ 
 
-:::{.fragment}
+:::{.fragment fragment-index="3"}
 The cure is to [randomize]{.alert} the sequence, not to drop points
 :::
 
@@ -179,7 +179,7 @@ The cure is to [randomize]{.alert} the sequence, not to drop points
 &nbsp;  
 :::
 
-::: {.column width="49%"}
+::: {.column width="49%" .fragment fragment-index="1"}
 
 ### This is a bad idea; keeping $\vx_0$
 
@@ -192,10 +192,10 @@ The LD community urges users and libraries to keep $\vx_0$ in the sequence, [(Sc
 
 :::
 
-::: {.fragment}
+::: {.fragment fragment-index="2"}
 But what if 
 
-- There is [missing]{.alert} data, $f(\vx_{i_1}), f(\vx_{i_2}), \ldots, f(\vx_{i_k})$?  
+- There is [missing]{.alert} data, $f(\vx_{i_1}), f(\vx_{i_2}), \ldots, f(\vx_{i_{n_0}})$?  
 
 - We [run out of budget]{.alert} before we reach the desired sample size?
 
@@ -208,7 +208,7 @@ But what if
 [{{< meta papers.hickrikuonuy_2012_weighted_integration.cite >}}]({{< meta papers.hickrikuonuy_2012_weighted_integration.doi_url >}}) provides a way to handle missing data and stopping criteria for LD sequences
 
 
-# What we can do so far
+# What we can do
 
 ::: {.columns}
 
@@ -234,7 +234,7 @@ But what if
 <h3>Kronecker sequences</h3>
 
 \begin{align*}
-\boldsymbol{x}_i &= i\boldsymbol{\zeta} + \boldsymbol{\Delta} \bmod \boldsymbol{1} \\
+\vx_i &= i\boldsymbol{\zeta} + \boldsymbol{\Delta} \bmod \boldsymbol{1} \\
 \boldsymbol{\zeta}, \boldsymbol{\Delta} & \in [0,1)^d\\
 \end{align*}
 
@@ -298,19 +298,19 @@ fig.tight_layout()
 
 ## Discrepancies and (weighted) expected squared discrepancies
 \begin{align*}
-\Dsc\bigl (\{\boldsymbol{x}_i\}_{i=0}^{n-1}, \mathcal{F} \bigr) &:= \sup_{\lVert f \rVert_{\cf} \le 1 }\left \lvert \int_{[0,1]^d} f(\boldsymbol{x}) \, \mathrm{d} \boldsymbol{x} - \frac 1n \sum_{i=0}^{n-1} f(\boldsymbol{x}_i) \right \rvert \\
-\Dsc^2\bigl (\{\boldsymbol{x}_i\}_{i=0}^{n-1}, \mathcal{F} \bigr) & = 
-\int_{[0,1]^d \times [0,1]^d} K(\boldsymbol{t}, \boldsymbol{x}) \, \mathrm{d} \boldsymbol{t}  \mathrm{d} \boldsymbol{x}
-- \frac{2}{n} \sum_{i=0}^{n-1} \int_{[0,1]^d} K(\boldsymbol{x}_i, \boldsymbol{x}) \, \mathrm{d} \boldsymbol{x}
-+ \frac{1}{n^2} \sum_{i,j=0}^{n-1} K(\boldsymbol{x}_i, \boldsymbol{x}_j)  \\
+\Dsc\bigl (\{\vx_i\}_{i=0}^{n-1}, \cf \bigr) &:= \sup_{\lVert f \rVert_{\cf} \le 1 }\left \lvert \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac 1n \sum_{i=0}^{n-1} f(\vx_i) \right \rvert \\
+\Dsc^2\bigl (\{\vx_i\}_{i=0}^{n-1}, \cf \bigr) & = 
+\int_{[0,1]^d \times [0,1]^d} K(\vt, \vx) \, \dif \vt  \dif \vx
+- \frac{2}{n} \sum_{i=0}^{n-1} \int_{[0,1]^d} K(\vx_i, \vx) \, \dif \vx
++ \frac{1}{n^2} \sum_{i,j=0}^{n-1} K(\vx_i, \vx_j)  \\
 & \qquad \qquad \text{where } K \text{ is the reproducing kernel of the Hilbert space } \cf
 \end{align*}
 
 :::{.fragment}
 
 $$
-\ESD \bigl (\{\boldsymbol{x}_i\}_{i=0}^{n-1}, \mathcal{F} \bigr) := \Ex\left[ \Dsc^2\bigl (\{\boldsymbol{x}_i\}_{i=0}^{n-1}, \mathcal{F} \bigr) \right] \qquad 
-\WESD (N,d) := \sum_{n=1}^N n \, \ESD \bigl (\{\boldsymbol{x}_i\}_{i=0}^{n-1}, \mathcal{F} \bigr)
+\ESD \bigl (\{\vx_i\}_{i=0}^{n-1}, \cf \bigr) := \Ex\left[ \Dsc^2\bigl (\{\vx_i\}_{i=0}^{n-1}, \cf \bigr) \right] \qquad 
+\WESD (N,d) := \sum_{n=1}^N \class{alert}{n} \, \ESD \bigl (\{\vx_i\}_{i=0}^{n-1}, \cf \bigr)
 $$
 
 :::
@@ -318,19 +318,19 @@ $$
 ## (Weighted) expected squared discrepancies for lattice and Kronecker sequences
 
 \begin{align*}
-\textrm{ESD}\bigl (\{\phi_b(i) \vzeta \}_{i=0}^{n-1} \ \class{alert}{\text{lattice}}, \mathcal{F} \bigr)
-& = - \overline{K} + \frac 1{n^2} \biggl [ n \widetilde{K}(\boldsymbol{0}) +  \sum_{k=1}^{b^{\lceil \log_b n\rceil}-1} \#_n(k) \widetilde{K}\bigl( \phi_b(k) \boldsymbol{\zeta}\bigr) \biggr] \\
-\textrm{ESD}\bigl (\{i \vzeta \}_{i=0}^{n-1}\ \class{alert}{\text{Kronecker}}, \mathcal{F} \bigr) 
-& = - \overline{K} + \frac 1{n^2} \biggl [ n \widetilde{K}(\boldsymbol{0}) + 2 \sum_{k=1}^{n -1}(n - k) \widetilde{K}( k \boldsymbol{\zeta}) \biggr] \\
-\widetilde{K}(\boldsymbol{x}) &: = \int_{[0,1]^d} K(\boldsymbol{x} + \boldsymbol{y} \bmod \boldsymbol{1}, 
-\boldsymbol{y}) \, \mathrm{d} \boldsymbol{y} \qquad
-\overline{K} : = \int_{[0,1]^d} \widetilde{K}(\boldsymbol{x}) \, \mathrm{d} \boldsymbol{x}\\
+\textrm{ESD}\bigl (\{\phi_b(i) \vzeta \}_{i=0}^{n-1} \ \class{alert}{\text{lattice}}, \cf \bigr)
+& = - \overline{K} + \frac 1{n^2} \biggl [ n \tK(\boldsymbol{0}) +  \sum_{k=1}^{b^{\lceil \log_b n\rceil}-1} \#_n(k) \tK\bigl( \phi_b(k) \boldsymbol{\zeta}\bigr) \biggr] \\
+\textrm{ESD}\bigl (\{i \vzeta \}_{i=0}^{n-1}\ \class{alert}{\text{Kronecker}}, \cf \bigr) 
+& = - \overline{K} + \frac 1{n^2} \biggl [ n \tK(\boldsymbol{0}) + 2 \sum_{k=1}^{n -1}(n - k) \tK( k \boldsymbol{\zeta}) \biggr] \\
+\tK(\vx) &: = \int_{[0,1]^d} K(\vx + \vy \bmod \boldsymbol{1}, 
+\vy) \, \dif \vy \qquad
+\overline{K} : = \int_{[0,1]^d} \tK(\vx) \, \dif \vx\\
 \#_n(k) &: = \mathrm{card}\bigl \{k : \phi_b(k) = \phi_b(i) - \phi_b(j) \bmod 1 \text{ s.t. } i, j, \in \{0, \ldots, n-1 \} \bigr\} \\
-\WESD (N,d)  & := \sum_{n=1}^N n \, \ESD \bigl (\{\boldsymbol{x}_i\}_{i=0}^{n-1}, \mathcal{F} \bigr) \qquad \text{in } \class{alert}{\Order(N)} \text{ operations}
+\WESD (N,d)  & := \sum_{n=1}^N \class{alert}{n} \, \ESD \left (\begin{Bmatrix} \{\phi_b(i) \vzeta \}_{i=0}^{n-1} \text{ lattice} \\ \{i \vzeta \}_{i=0}^{n-1} \text{ Kronecker} \end{Bmatrix}, \cf \right) \qquad \text{in } \class{alert}{\Order(N)} \text{ operations}
 \end{align*}
 
 
-## Component-by-component (CBC) constructions
+## Component-by-component (CBC) constructions w/ decaying coordinate weights $\gamma_\ell = \ell^{-2}$, $\ell=1, \ldots, d$
 
 1. For $d=1$, choose $\zeta_1$ to minimize $\textrm{WSESD}(N, d)$
 
@@ -351,7 +351,7 @@ n_which_trend = np.array(n_vals[999:-1])
 :::{.columns}
 
 ::: {.column width="49%"}
-Ours vs IID and CBC by [{{< meta papers.cookuonuy_2006_constructing_embedded.cite >}}]({{< meta papers.cookuonuy_2006_constructing_embedded.doi_url >}})
+Ours vs IID & CBC by [{{< meta papers.cookuonuy_2006_constructing_embedded.cite >}}]({{< meta papers.cookuonuy_2006_constructing_embedded.doi_url >}})
 ```{python}
 #| echo: false
 #| fig-width: 4
@@ -394,7 +394,7 @@ fig.tight_layout();
 
 ::: {.column width="49%"}
 
-Ours vs IID, [{{< meta papers.richtmyer_1951_sequences.cite >}}]({{< meta papers.richtmyer_1951_sequences.project_url >}}), and [{{< meta papers.dicgodlarpilsuz_2025_quasi-uniformity.cite >}}]({{< meta papers.dicgodlarpilsuz_2025_quasi-uniformity.doi_url >}})
+Ours vs IID, [{{< meta papers.richtmyer_1951_sequences.cite >}}]({{< meta papers.richtmyer_1951_sequences.project_url >}}), & [{{< meta papers.dicgodlarpilsuz_2025_quasi-uniformity.cite >}}]({{< meta papers.dicgodlarpilsuz_2025_quasi-uniformity.doi_url >}})
 ```{python}
 #| echo: false
 #| fig-width: 4
@@ -441,11 +441,75 @@ fig.tight_layout();
 
 :::
 
-## An Asian option example
+## Comparing lattice and Kronecker sequences
 
+::: {.columns}
 
+:::{.column width="49%"}
 
+&nbsp;
 
+Comparing root mean squared discrepancies
+
+:::
+
+:::{ .column width="2%"}
+&nbsp;
+:::
+
+::: {.column width="49%" .fragment fragment-index="1"}
+$$
+\class{.alert}{\text{Keister}} \quad \int_{\reals^d} \cos(\lVert \vx \rVert) \, \exp(-\lVert \vx \rVert^2) \, \dif \vx = ?
+$$
+
+:::
+
+:::
+
+::: {.columns}
+
+:::{.column width="49%"}
+
+```{python}
+#| echo: false
+#| fig-width: 4
+#| fig-height: 4
+#| fig-align: center
+
+fig, ax = plt.subplots()
+ax.set_aspect('equal')
+ax.loglog(n_vals,discIID, label = "IID")
+ax.loglog(n_vals,Kron_discrepancies["Our CBC"], label="CBC Kronecker")
+ax.loglog(n_vals,CBC_lattice_disc, label = "CBC lattice")
+#Put the Kronecker and lattice discrepancies together to fit a trend line
+combo_n = np.concatenate([n_which_trend,n_which_trend])
+combo_disc = np.concatenate([CBC_lattice_disc[n_which_trend],Kron_discrepancies["Our CBC"][n_which_trend]])
+power, coef = nb.plot_log_trend_line(ax, combo_n, combo_disc)
+ax.set_xlabel("$n$")
+ax.set_ylabel("RMS Discrepancy")
+gamma_str = ", ".join(f"{g:.2f}" for g in gamma[:6])
+if len(gamma) > 5:
+    gamma_str += ", …"   # ellipsis at the end
+ax.set_title(rf"$d = {d}, \boldsymbol{{\gamma}} = ({gamma_str})$")
+ax.set_xlim(1, 1e6) 
+ax.set_ylim(1e-6, 1)
+ax.legend(loc="lower left",fontsize=20)
+fig.tight_layout();
+```
+
+:::
+
+:::{ .column width="2%"}
+&nbsp;
+:::
+
+::: {.column width="49%" .fragment fragment-index="1"}
+
+![](../assets/img/1000000KeisterError_Lattice_Kronecker_d_13_n_1048576.png){fig-align="center" width="100%"}
+
+:::
+
+:::
 
 
 # Implementation
@@ -457,7 +521,14 @@ fig.tight_layout();
 - <span id="qmcpy-pypi-impact">Loading PyPI impact metric...</span>
 - In active development with contributions from the community
 
+
 # Further work
+- More efficient CBC algorithms
+- Theoretical guarantees for decay of discrepancy of Kronecker sequences
+- Stopping rules based on
+  - Decay of discrete Fourier coefficients of the integrand 
+  - Gaussian process surrogate models of the integrand
+
 
 
 # References
@@ -467,16 +538,16 @@ fig.tight_layout();
 [{{< meta papers.cookuonuy_2006_constructing_embedded.cite >}}]{.ref-label}
 {{< meta papers.cookuonuy_2006_constructing_embedded.full >}}
 [DOI]({{< meta papers.cookuonuy_2006_constructing_embedded.doi_url >}}) · 
-[arXiv]({{< meta papers.cookuonuy_2006_constructing_embedded.arxiv_url >}}) · 
-[publisher]({{< meta papers.cookuonuy_2006_constructing_embedded.publisher_url >}}) · 
-[project]({{< meta papers.cookuonuy_2006_constructing_embedded.project_url >}})
-
+[publisher]({{< meta papers.cookuonuy_2006_constructing_embedded.publisher_url >}})
 
 [{{< meta papers.dickripil_2022_lattice_rules_book.cite >}}]{.ref-label}
 {{< meta papers.dickripil_2022_lattice_rules_book.full >}}
 [DOI]({{< meta papers.dickripil_2022_lattice_rules_book.doi_url >}}) · 
 [publisher]({{< meta papers.dickripil_2022_lattice_rules_book.publisher_url >}})
 
+[{{< meta papers.dicpil_2010_digital_nets_sequences.cite >}}]{.ref-label}
+{{< meta papers.dicpil_2010_digital_nets_sequences.full >}}
+[publisher]({{< meta papers.dicpil_2010_digital_nets_sequences.publisher_url >}})
 
 [{{< meta papers.hickrikuonuy_2012_weighted_integration.cite >}}]{.ref-label}
 {{< meta papers.hickrikuonuy_2012_weighted_integration.full >}}
@@ -486,7 +557,7 @@ fig.tight_layout();
 
 [{{< meta papers.richtmyer_1951_sequences.cite >}}]{.ref-label}
 {{< meta papers.richtmyer_1951_sequences.full >}}
-[project]({{< meta papers.richtmyer_1951_sequences.project_url >}})
+[report]({{< meta papers.richtmyer_1951_sequences.project_url >}})
 
 
 :::
@@ -507,6 +578,24 @@ $$
 c n_k^{-P} \le \Dsc(\{\vx_i\}_{i=0}^{n_k-1}) \le C n_k^{-p} \qquad k = 1, 2, \ldots
 $$
 
-where $p \le P \le Q$.
+where $p \le P \le Q$.  
 
-## testing
+
+## The $n_k$ must grow at least geometrically if $p > 1$
+
+Note that for all $n_- < n_+ = n_-+n_0$, we have
+
+\begin{multline*}
+n_+ \left ( \int_{[0,1]^d} f(\vx) \, \dif \vx -  \frac{1}{n_+} \sum_{i=0}^{n_+-1} f(\vx_i) \right) \\
+= n_- \left ( \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac{1}{n_-} \sum_{i=0}^{n_--1} f(\vx_i) \right) + n_0 \left ( \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac{1}{n_0} \sum_{i=n_-}^{n_+-1} f(\vx_i) \right)
+\end{multline*}
+
+Because
+$$
+a
+$$
+Suppose $n_{k+1} \le R n_k$ for some $R > 1$ and all $k$. Then
+\begin{align*}
+c n_{k+1}^{-P} & \le \Dsc(\{\vx_i\}_{i=0}^{n_{k+1}-1}) \le C n_{k+1}^{-p} \\
+& \le C (R n_k)^{-p} = C R^{-p} n_k^{-p} \le C R^{-p} c n_k^{-P} \le c n_{k+1}^{-P}
+\end{align*}  
