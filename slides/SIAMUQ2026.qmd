@@ -25,7 +25,7 @@ format:
     code-overflow: wrap
 ---
 
-# What quasi-Monte Carlo (QMC) does
+# What quasi-Monte Carlo (QMC) does w/ low discrepancy sequences
 
 {{< include setup.qmd >}}
 
@@ -33,7 +33,7 @@ format:
 
 ::: {.column width="49%"}
 
-For $\vx_0, \vx_1, \ldots \IIDsim \Unif[0,1]^d$
+For $\vx_0, \vx_1, \ldots \class{alert}{\IIDsim} \Unif[0,1]^d$
 \begin{multline*}
 \sqrt{\Ex\left[ \left( \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac{1}{n} \sum_{i=0}^{n-1} f(\vx_i) \right)^2 \right]} \\
 = \frac{\std(f)}{\alert{\sqrt{n}}}
@@ -47,7 +47,7 @@ For $\vx_0, \vx_1, \ldots \IIDsim \Unif[0,1]^d$
 
 ::: {.column width="49%"}
 
-For [carefully]{.alert} chosen $\vx_0, \vx_1, \ldots \LDsim \Unif[0,1]^d$
+For [carefully]{.alert} chosen $\vx_0, \vx_1, \ldots \class{alert}{\LDsim} \Unif[0,1]^d$
 \begin{multline*}
 \left\lvert \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac{1}{n} \sum_{i=0}^{n-1} f(\vx_i) \right\rvert
 \\ \le \underbracket{\Dsc(\{\vx_i\}_{i=0}^{n-1})}_{\Order(\alert{n^{-1+\delta}}) \text{ or \class{alert}{better}}} \, \lVert f \rVert_{\cf}
@@ -133,7 +133,7 @@ fig.tight_layout()
 &nbsp;
 ::: 
 
-::: {.column width="49%"}
+::: {.column width="49%" .fragment fragment-index="1"}
 
 ### Low discrepancy (LD) sequences
 
@@ -144,12 +144,13 @@ fig.tight_layout()
       - [Lattices]{.alert} [{{< meta papers.dickripil_2022_lattice_rules_book.cite >}}]({{< meta papers.dickripil_2022_lattice_rules_book.doi_url >}}): $n = 1, b, b^2, \ldots$ 
       - [Digital nets]{.alert} [{{< meta papers.dicpil_2010_digital_nets_sequences.cite >}}]({{< meta papers.dicpil_2010_digital_nets_seqquences.publisher_url >}})  : $n = 1, b, b^2, \ldots$ 
       - [Halton]{.alert}: $n = 1, 2, 3, \ldots$ but bad projections in higher dimensions
-      - [Kronecker]{.alert}: $n = 1, 2, 3, \ldots$ less studied
+      - [Kronecker]{.alert} [{{< meta papers.richtmyer_1951_sequences.cite >}}]({{< meta papers.richtmyer_1951_sequences.project_url >}}): $n = 1, 2, 3, \ldots$ less studied
     - _Not_ robust to missing points
 :::
+
 :::
 
-::: {.fragment}
+::: {.fragment fragment-index="2"}
 
 ### Want LD sequences that are _extensible_ in $n$ and _robust_ to missing points
 
@@ -169,7 +170,7 @@ fig.tight_layout()
 - $(0,\ldots,0)$ looks too regular
 - Transforming $\LDsim \Unif[0,1]^d$ to $\LDsim\Norm(\vzero,\mI)$ $0 \to -\infty$ 
 
-:::{.fragment fragment-index="3"}
+:::{.fragment fragment-index="2"}
 The cure is to [randomize]{.alert} the sequence, not to drop points
 :::
 
@@ -192,7 +193,7 @@ The LD community urges users and libraries to keep $\vx_0$ in the sequence, [(Sc
 
 :::
 
-::: {.fragment fragment-index="2"}
+::: {.fragment fragment-index="3"}
 But what if 
 
 - There is [missing]{.alert} data, $f(\vx_{i_1}), f(\vx_{i_2}), \ldots, f(\vx_{i_{n_0}})$?  
@@ -208,7 +209,7 @@ But what if
 [{{< meta papers.hickrikuonuy_2012_weighted_integration.cite >}}]({{< meta papers.hickrikuonuy_2012_weighted_integration.doi_url >}}) provides a way to handle missing data and stopping criteria for LD sequences
 
 
-# What we can do
+# What we can do with lattice and Kronecker sequences
 
 ::: {.columns}
 
@@ -299,7 +300,7 @@ fig.tight_layout()
 ## Discrepancies and (weighted) expected squared discrepancies
 \begin{align*}
 \Dsc\bigl (\{\vx_i\}_{i=0}^{n-1}, \cf \bigr) &:= \sup_{\lVert f \rVert_{\cf} \le 1 }\left \lvert \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac 1n \sum_{i=0}^{n-1} f(\vx_i) \right \rvert \\
-\Dsc^2\bigl (\{\vx_i\}_{i=0}^{n-1}, \cf \bigr) & = 
+ & = 
 \int_{[0,1]^d \times [0,1]^d} K(\vt, \vx) \, \dif \vt  \dif \vx
 - \frac{2}{n} \sum_{i=0}^{n-1} \int_{[0,1]^d} K(\vx_i, \vx) \, \dif \vx
 + \frac{1}{n^2} \sum_{i,j=0}^{n-1} K(\vx_i, \vx_j)  \\
@@ -308,10 +309,10 @@ fig.tight_layout()
 
 :::{.fragment}
 
-$$
-\ESD \bigl (\{\vx_i\}_{i=0}^{n-1}, \cf \bigr) := \Ex\left[ \Dsc^2\bigl (\{\vx_i\}_{i=0}^{n-1}, \cf \bigr) \right] \qquad 
+\begin{gather*}
+\ESD \bigl (\{\vx_i\}_{i=0}^{n-1}, \cf \bigr) := \Ex\left[ \Dsc^2\bigl (\{\vx_i + \vDelta \bmod \vone \}_{i=0}^{n-1}, \cf \bigr) \right] \\ 
 \WESD (N,d) := \sum_{n=1}^N \class{alert}{n} \, \ESD \bigl (\{\vx_i\}_{i=0}^{n-1}, \cf \bigr)
-$$
+\end{gather*}
 
 :::
 
@@ -326,11 +327,12 @@ $$
 \vy) \, \dif \vy \qquad
 \overline{K} : = \int_{[0,1]^d} \tK(\vx) \, \dif \vx\\
 \#_n(k) &: = \mathrm{card}\bigl \{k : \phi_b(k) = \phi_b(i) - \phi_b(j) \bmod 1 \text{ s.t. } i, j, \in \{0, \ldots, n-1 \} \bigr\} \\
-\WESD (N,d)  & := \sum_{n=1}^N \class{alert}{n} \, \ESD \left (\begin{Bmatrix} \{\phi_b(i) \vzeta \}_{i=0}^{n-1} \text{ lattice} \\ \{i \vzeta \}_{i=0}^{n-1} \text{ Kronecker} \end{Bmatrix}, \cf \right) \qquad \text{in } \class{alert}{\Order(N)} \text{ operations}
+\WESD (N,d)  & := \sum_{n=1}^N \class{alert}{n} \, \ESD \left (\begin{Bmatrix} \{\phi_b(i) \vzeta \}_{i=0}^{n-1} \text{ lattice} \\ \{i \vzeta \}_{i=0}^{n-1} \text{ Kronecker} \end{Bmatrix}, \cf \right) \\ 
+& \qquad \qquad \text{in } \class{alert}{\Order(N)} \text{ operations}
 \end{align*}
 
 
-## Component-by-component (CBC) constructions w/ decaying coordinate weights $\gamma_\ell = \ell^{-2}$, $\ell=1, \ldots, d$
+## Component-by-component (CBC) constructions for the generating vector $\vzeta$ \\ assuming decaying coordinate weights $\gamma_\ell = \ell^{-2}$, $\ell=1, \ldots, d$
 
 1. For $d=1$, choose $\zeta_1$ to minimize $\textrm{WSESD}(N, d)$
 
@@ -578,10 +580,9 @@ $$
 c n_k^{-P} \le \Dsc(\{\vx_i\}_{i=0}^{n_k-1}) \le C n_k^{-p} \qquad k = 1, 2, \ldots
 $$
 
-where $p \le P \le Q$.  
+where $0 \le p \le P \le Q$.  
 
-
-## The $n_k$ must grow at least geometrically if $p > 1$
+---
 
 Note that for all $n_- < n_+ = n_-+n_0$, we have
 
@@ -589,6 +590,34 @@ Note that for all $n_- < n_+ = n_-+n_0$, we have
 n_+ \left ( \int_{[0,1]^d} f(\vx) \, \dif \vx -  \frac{1}{n_+} \sum_{i=0}^{n_+-1} f(\vx_i) \right) \\
 = n_- \left ( \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac{1}{n_-} \sum_{i=0}^{n_--1} f(\vx_i) \right) + n_0 \left ( \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac{1}{n_0} \sum_{i=n_-}^{n_+-1} f(\vx_i) \right)
 \end{multline*}
+
+which implies that
+
+\begin{alignat*}{3}
+\frac{n_-}{n_+} \Dsc(\{\vx_i\}_{i=0}^{n_--1}) - \frac{n_0}{n_+} \Dsc(\{\vx_i\}_{i=n_-}^{n_+-1}) & 
+\le \Dsc(\{\vx_i\}_{i=0}^{n_+-1}) & 
+\le \frac{n_-}{n_+} \Dsc(\{\vx_i\}_{i=0}^{n_--1}) +\frac{n_0}{n_+} \Dsc(\{\vx_i\}_{i=n_-}^{n_+-1}) 
+\\
+\frac{n_+}{n_-} \Dsc(\{\vx_i\}_{i=0}^{n_+-1}) - \frac{n_0}{n_-} \Dsc(\{\vx_i\}_{i=n_-}^{n_+-1}) &
+\le \Dsc(\{\vx_i\}_{i=0}^{n_--1}) &
+\le \frac{n_+}{n_-} \Dsc(\{\vx_i\}_{i=0}^{n_+-1}) + \frac{n_0}{n_-} \Dsc(\{\vx_i\}_{i=n_-}^{n_+-1}) 
+\\
+\frac{n_-}{n_+} \Dsc(\{\vx_i\}_{i=0}^{n_--1}) + \frac{n_0}{n_+} \Dsc(\{\vx_i\}_{i=n_-}^{n_+-1}) & 
+\le \Dsc(\{\vx_i\}_{i=0}^{n_+-1}) & \le \frac{n_-}{n_+} \Dsc(\{\vx_i\}_{i=0}^{n_--1}) - \frac{n_0}{n_+} \Dsc(\{\vx_i\}_{i=n_-}^{n_+-1}) 
+\\
+\frac{n_+}{n_-} \Dsc(\{\vx_i\}_{i=0}^{n_+-1}) + \frac{n_0}{n_-} \Dsc(\{\vx_i\}_{i=n_-}^{n_+-1})  & \le \Dsc(\{\vx_i\}_{i=0}^{n_--1}) & \le \frac{n_+}{n_-} \Dsc(\{\vx_i\}_{i=0}^{n_+-1}) + \frac{n_0}{n_-} \Dsc(\{\vx_i\}_{i=n_-}^{n_+-1}) \\
+\end{alignat*}
+
+
+
+
+
+
+
+
+## The $n_k$ must grow at least geometrically if $p > 1$
+
+
 
 Because
 $$
