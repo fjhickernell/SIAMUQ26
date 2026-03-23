@@ -4,13 +4,17 @@ author: "Fred J. Hickernell"
 subtitle: |
   Illinois Institute of Technology, hickernell@illinoistech.edu
 
-  Joint work with Claude Hall, Jr., Jimmy Nguyen, Alexander Pride, Aleksei G. Sorokin, and the <span class="pkg">qmcpy</span> development team
+  Joint work with Claude Hall, Jr., Jimmy Nguyen, Alexander Pride, Aleksei G. Sorokin, and <br>
+  the <span class="pkg">qmcpy</span> development team
 
-  Supported in part by NSF-DMS-2316011 &nbsp; &nbsp; Thanks to the organizers
+  Supported in part by NSF-DMS-2316011 &nbsp; &nbsp;  ·  &nbsp; &nbsp; Thanks to the organizers
 
   SIAM Conference on Uncertainty Quantification (UQ26), Minneapolis, MN
 
   🔗 Slides: fjhickernell.github.io/SIAMUQ26/slides/SIAMUQ2026.html
+
+  <img src="../assets/img/SIAMUQ2026slides.png" alt="QR code to slides" style="width:240px; background:white; padding:6px; border-radius:6px;">
+
 date: 2026-03-23
 date-format: "MMMM D, YYYY"
 
@@ -25,7 +29,7 @@ format:
     code-overflow: wrap
 ---
 
-# What quasi-Monte Carlo (QMC) does w/ low discrepancy sequences
+# What quasi-Monte Carlo (QMC) does w/ low discrepancy sequences {#what-qmc-does}
 
 {{< include setup.qmd >}}
 
@@ -33,10 +37,10 @@ format:
 
 ::: {.column width="49%"}
 
-For $\vx_0, \vx_1, \ldots \class{alert}{\IIDsim} \Unif[0,1]^d$
+For $\vx_0, \vx_1, \ldots \alert{\IIDsim} \Unif[0,1]^d$
 \begin{multline*}
 \sqrt{\Ex\left[ \left( \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac{1}{n} \sum_{i=0}^{n-1} f(\vx_i) \right)^2 \right]} \\
-= \frac{\std(f)}{\alert{\sqrt{n}}}
+= \alert{n^{-1/2}} \std(f)
 \end{multline*}
 
 :::
@@ -47,10 +51,10 @@ For $\vx_0, \vx_1, \ldots \class{alert}{\IIDsim} \Unif[0,1]^d$
 
 ::: {.column width="49%"}
 
-For [carefully]{.alert} chosen $\vx_0, \vx_1, \ldots \class{alert}{\LDsim} \Unif[0,1]^d$
+For [carefully]{.alert} chosen $\vx_0, \vx_1, \ldots  \alert{\LDsim} \Unif[0,1]^d$
 \begin{multline*}
 \left\lvert \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac{1}{n} \sum_{i=0}^{n-1} f(\vx_i) \right\rvert
-\\ \le \underbracket{\Dsc(\{\vx_i\}_{i=0}^{n-1})}_{\Order(\alert{n^{-1+\delta}}) \text{ or \class{alert}{better}}} \, \lVert f \rVert_{\cf}
+\\ \le \underbracket{\Dsc\bigl(\{\vx_i\}_{i=0}^{n-1}\bigr)}_{\Order(\alert{n^{-1+\delta}}) \text{ or \class{alert}{better}}} \, \lVert f \rVert_{\cf}
 \end{multline*}
 
 :::
@@ -114,7 +118,7 @@ fig.tight_layout()
 
 
 
-## Problem
+## Problem {#problem}
 
 ::: {.columns}
 
@@ -143,7 +147,7 @@ fig.tight_layout()
     - Normally _not_ easily extensible in $n$
       - [Lattices]{.alert} [{{< meta papers.dickripil_2022_lattice_rules_book.cite >}}]({{< meta papers.dickripil_2022_lattice_rules_book.doi_url >}}): $n = 1, b, b^2, \ldots$ 
       - [Digital nets]{.alert} [{{< meta papers.dicpil_2010_digital_nets_sequences.cite >}}]({{< meta papers.dicpil_2010_digital_nets_seqquences.publisher_url >}})  : $n = 1, b, b^2, \ldots$ 
-      - [Halton]{.alert}: $n = 1, 2, 3, \ldots$ but bad projections in higher dimensions
+      - [Halton]{.alert} [{{< meta papers.halton_1960_sequences.cite >}}]({{< meta papers.halton_1960_sequences.doi_url >}}): $n = 1, 2, 3, \ldots$ but bad projections in higher dimensions
       - [Kronecker]{.alert} [{{< meta papers.richtmyer_1951_sequences.cite >}}]({{< meta papers.richtmyer_1951_sequences.project_url >}}): $n = 1, 2, 3, \ldots$ less studied
     - _Not_ robust to missing points
 :::
@@ -159,7 +163,7 @@ fig.tight_layout()
 
 :::
 
-## The sad and thrilling story of the missing, $\vx_0$
+## The sad and thrilling story of the missing $\vx_0$
 
 :::{.columns}
 
@@ -194,6 +198,7 @@ The LD community urges users and libraries to keep $\vx_0$ in the sequence, [(Sc
 :::
 
 ::: {.fragment fragment-index="3"}
+
 But what if 
 
 - There is [missing]{.alert} data, $f(\vx_{i_1}), f(\vx_{i_2}), \ldots, f(\vx_{i_{n_0}})$?  
@@ -203,13 +208,28 @@ But what if
 :::
 
 
-# The best we can hope for
+# The best we can hope for {#the-best-we-can-hope-for}
+
+Building on [{{< meta papers.hickrikuonuy_2012_weighted_integration.cite >}}]({{< meta papers.hickrikuonuy_2012_weighted_integration.doi_url >}}) we note that [(see the proofs)](#proofs)
+
+&nbsp;
+
+Suppose $\Dsc\bigl(\{\vx_i\}_{i=0}^{n_k-1}\bigr) \le C n_k^{-p}$ for a sequence of preferred sample sizes, $n_1, n_2, \ldots$: 
+
+- If $p > 1$, then $n_{k+1} - n_k$ cannot be bounded
+
+- If you lose/gain a bounded [number]{.alert} of data, i.e., $n = n_k \pm n_0$, then $\Dsc\bigl(\{\vx_i\}_{i=0}^{n-1}\bigr) = \Order(n_k^{-\min(p,1)})$ 
+
+  - If $p \le 1$, then you do not lose any thing asymptotically
+
+  - If $p > 1$, then you still have $\Order(n_k^{-1})$ convergence
+
+- If you lose/gain a bounded [proportion]{.alert} of data, $\alpha$, then $\Dsc\bigl(\{\vx_i\}_{i=0}^{n-1}\bigr) \lesssim \alpha$
 
 
-[{{< meta papers.hickrikuonuy_2012_weighted_integration.cite >}}]({{< meta papers.hickrikuonuy_2012_weighted_integration.doi_url >}}) provides a way to handle missing data and stopping criteria for LD sequences
 
 
-# What we can do with lattice and Kronecker sequences
+# What we can do with lattice and Kronecker sequences {#what-we-can-do-with-lattice-and-kronecker-sequences}
 
 ::: {.columns}
 
@@ -299,7 +319,7 @@ fig.tight_layout()
 
 ## Discrepancies and (weighted) expected squared discrepancies
 \begin{align*}
-\Dsc\bigl (\{\vx_i\}_{i=0}^{n-1}, \cf \bigr) &:= \sup_{\lVert f \rVert_{\cf} \le 1 }\left \lvert \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac 1n \sum_{i=0}^{n-1} f(\vx_i) \right \rvert \\
+\Dsc\bigl(\{\vx_i\}_{i=0}^{n-1}, \cf \bigr) &:= \sup_{\lVert f \rVert_{\cf} \le 1 }\left \lvert \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac 1n \sum_{i=0}^{n-1} f(\vx_i) \right \rvert \\
  & = 
 \int_{[0,1]^d \times [0,1]^d} K(\vt, \vx) \, \dif \vt  \dif \vx
 - \frac{2}{n} \sum_{i=0}^{n-1} \int_{[0,1]^d} K(\vx_i, \vx) \, \dif \vx
@@ -514,7 +534,7 @@ fig.tight_layout();
 :::
 
 
-# Implementation
+# Implementation {#implementation}
 
 `qmcpy` is an open source Python library for quasi-Monte Carlo methods
 
@@ -523,17 +543,27 @@ fig.tight_layout();
 - <span id="qmcpy-pypi-impact">Loading PyPI impact metric...</span>
 - In active development with contributions from the community
 
+# Take-aways {#take-aways}
 
-# Further work
+<h3>Conclusion</h3> 
+- Keep the preferred nodes, $\{\vx_i\}_{i=0}^{n_k}$, optimal low discrepancy
+- Don't sweat it if you lose a few or have a few extra
+  - If you really want higher order convergence, then use reproducing/covariance kernels to find sample weights
+
+::: {.fragment}
+
+<h3>Further work</h3> 
 - More efficient CBC algorithms
-- Theoretical guarantees for decay of discrepancy of Kronecker sequences
+- Theoretical guarantees for decay of discrepancy of Kronecker sequences by CBC
+- Extend to digital sequences with arbitrary sample sizes
 - Stopping rules based on
   - Decay of discrete Fourier coefficients of the integrand 
   - Gaussian process surrogate models of the integrand
 
+:::
 
 
-# References
+# References {#references}
 
 ::: {.refs}
 
@@ -565,24 +595,24 @@ fig.tight_layout();
 :::
 
 
-# Proofs{#proofs}
+# Proofs {#proofs}
 
 For a fixed Banach space of integrands, $\cf$, we have bounds on the discrepancy of any $n$-point set, $\{\vt_i\}_{i=0}^{n-1}$:
 
 $$
-0 < a n^{-Q} \le \inf_{\{\vt_i\}_{i=0}^{n-1} \subset [0,1]^d} \Dsc(\{\vt_i\}_{i=0}^{n-1}) \le \sup _{\{\vt_i\}_{i=0}^{n-1} \subset [0,1]^d} \Dsc(\{\vt_i\}_{i=0}^{n-1})\le A, \qquad n = 1, 2, \ldots
+0 < a n^{-Q} \le \inf_{\{\vt_i\}_{i=0}^{n-1} \subset [0,1]^d} \Dsc\bigl(\{\vt_i\}_{i=0}^{n-1}\bigr) \le \sup _{\{\vt_i\}_{i=0}^{n-1} \subset [0,1]^d} \Dsc\bigl(\{\vt_i\}_{i=0}^{n-1}\bigr)\le A, \qquad n = 1, 2, \ldots
 $$
 
 
 And also that for a specific sequence of nodes, $\{\vx_i\}_{i=0}^{\infty}$ and a sequence of sample sizes, $1 \le n_1 < n_2 < \ldots$, we have better bounds on the discrepancy:
 
 $$
-c n_k^{-P} \le \Dsc(\{\vx_i\}_{i=0}^{n_k-1}) \le C n_k^{-p} \qquad k = 1, 2, \ldots
+c n_k^{-P} \le \Dsc\bigl(\{\vx_i\}_{i=0}^{n_k-1}\bigr) \le C n_k^{-p} \qquad k = 1, 2, \ldots
 $$
 
 where $0 \le p \le P \le Q$.  
 
----
+--- 
 
 Note that for all $n_- < n_+ = n_-+n_0$, we have
 
@@ -593,38 +623,60 @@ n_+ \left ( \int_{[0,1]^d} f(\vx) \, \dif \vx -  \frac{1}{n_+} \sum_{i=0}^{n_+-1
 
 which implies that
 
-\begin{alignat*}{3}
-\frac{n_-}{n_+} \Dsc(\{\vx_i\}_{i=0}^{n_--1}) - \frac{n_0}{n_+} \Dsc(\{\vx_i\}_{i=n_-}^{n_+-1}) & 
-\le \Dsc(\{\vx_i\}_{i=0}^{n_+-1}) & 
-\le \frac{n_-}{n_+} \Dsc(\{\vx_i\}_{i=0}^{n_--1}) +\frac{n_0}{n_+} \Dsc(\{\vx_i\}_{i=n_-}^{n_+-1}) 
-\\
-\frac{n_+}{n_-} \Dsc(\{\vx_i\}_{i=0}^{n_+-1}) - \frac{n_0}{n_-} \Dsc(\{\vx_i\}_{i=n_-}^{n_+-1}) &
-\le \Dsc(\{\vx_i\}_{i=0}^{n_--1}) &
-\le \frac{n_+}{n_-} \Dsc(\{\vx_i\}_{i=0}^{n_+-1}) + \frac{n_0}{n_-} \Dsc(\{\vx_i\}_{i=n_-}^{n_+-1}) 
-\\
-\frac{n_-}{n_+} \Dsc(\{\vx_i\}_{i=0}^{n_--1}) + \frac{n_0}{n_+} \Dsc(\{\vx_i\}_{i=n_-}^{n_+-1}) & 
-\le \Dsc(\{\vx_i\}_{i=0}^{n_+-1}) & \le \frac{n_-}{n_+} \Dsc(\{\vx_i\}_{i=0}^{n_--1}) - \frac{n_0}{n_+} \Dsc(\{\vx_i\}_{i=n_-}^{n_+-1}) 
-\\
-\frac{n_+}{n_-} \Dsc(\{\vx_i\}_{i=0}^{n_+-1}) + \frac{n_0}{n_-} \Dsc(\{\vx_i\}_{i=n_-}^{n_+-1})  & \le \Dsc(\{\vx_i\}_{i=0}^{n_--1}) & \le \frac{n_+}{n_-} \Dsc(\{\vx_i\}_{i=0}^{n_+-1}) + \frac{n_0}{n_-} \Dsc(\{\vx_i\}_{i=n_-}^{n_+-1}) \\
-\end{alignat*}
-
-
-
-
-
-
-
-
-## The $n_k$ must grow at least geometrically if $p > 1$
-
-
-
-Because
-$$
-a
-$$
-Suppose $n_{k+1} \le R n_k$ for some $R > 1$ and all $k$. Then
 \begin{align*}
-c n_{k+1}^{-P} & \le \Dsc(\{\vx_i\}_{i=0}^{n_{k+1}-1}) \le C n_{k+1}^{-p} \\
-& \le C (R n_k)^{-p} = C R^{-p} n_k^{-p} \le C R^{-p} c n_k^{-P} \le c n_{k+1}^{-P}
-\end{align*}  
+\Dsc\bigl(\{\vx_i\}_{i=0}^{n_+-1}\bigr) & 
+\le \frac{n_-}{n_+} \Dsc\bigl(\{\vx_i\}_{i=0}^{n_--1}\bigr) +\frac{n_0}{n_+} \Dsc\bigl(\{\vx_i\}_{i=n_-}^{n_+-1}\bigr) 
+\\
+\Dsc\bigl(\{\vx_i\}_{i=0}^{n_--1}\bigr) &
+\le \frac{n_+}{n_-} \Dsc\bigl(\{\vx_i\}_{i=0}^{n_+-1}\bigr) + \frac{n_0}{n_-} \Dsc\bigl(\{\vx_i\}_{i=n_-}^{n_+-1}\bigr) 
+\\
+\Dsc\bigl(\{\vx_i\}_{i=n_-}^{n_+-1}\bigr) & 
+\le \frac{n_+}{n_0} \Dsc\bigl(\{\vx_i\}_{i=0}^{n_+-1}\bigr) + \frac{n_-}{n_0} \Dsc\bigl(\{\vx_i\}_{i=0}^{n_--1}\bigr)
+\end{align*}
+
+
+## $n_{k+1} -  n_k$ must grow if $p > 1$
+
+If $n_- = n_{k}$, $n_+ = n_{k+1}$, and $n_0 = n_{k+1} - n_k$, then 
+
+\begin{align*}
+0 < a (n_{k+1} - n_k) ^{-Q} & \le \Dsc\bigl(\{\vx_i\}_{i=n_k}^{n_{k+1}-1}\bigr) \\
+& \le \frac{n_{k+1}}{n_{k+1} - n_k} \Dsc\bigl(\{\vx_i\}_{i=0}^{n_{k+1}-1}\bigr) + \frac{n_k}{n_{k+1} - n_k} \Dsc\bigl(\{\vx_i\}_{i=0}^{n_{k}-1}\bigr) \\
+& \le (n_{k+1} - n_k)^{-1} C (n_{k+1}^{1-p} + n_k^{1-p}) \\
+a &\le C (n_{k+1} - n_k)^{Q-1} (n_{k+1}^{1-p} + n_k^{1-p}) \\
+\end{align*}
+
+So if $1 < p <Q$, then $n_{k+1} - n_k$ must grow at least on the order of $n_k^{\frac{p-1}{Q-1}}$
+
+## $\Order\bigl(n_k^{-\min(p,1)}\bigr)$ discrepancy if we lose/gain a bounded number of data
+
+### Losing points
+
+If $n_{+} = n_k$, and $n_- = n_k - n_0$ then 
+
+\begin{align*}
+\Dsc\bigl(\{\vx_i\}_{i=n_0}^{n_{k} -n_0 -1}\bigr)
+& \le \frac{n_{k}}{n_{k} - n_0} \Dsc\bigl(\{\vx_i\}_{i=0}^{n_{k}-1}\bigr) + \frac{n_0}{n_{k} - n_0} \Dsc\bigl(\{\vx_i\}_{i=n_k - n_0}^{n_k-1}\bigr) \\
+& \le  \frac{C n_{k}^{-p} + An_0 n_k^{-1}}{1 - n_0/n_k} 
+\end{align*}
+
+### Gaining points
+
+If $n_{-} = n_k$, and $n_+ = n_k +n_0$ then 
+
+\begin{align*}
+\Dsc\bigl(\{\vx_i\}_{i=n_0}^{n_{k} + n_0 -1}\bigr)
+& \le \frac{n_{k}}{n_{k} + n_0} \Dsc\bigl(\{\vx_i\}_{i=0}^{n_{k}-1}\bigr) + \frac{n_0}{n_{k} + n_0} \Dsc\bigl(\{\vx_i\}_{i=n_k}^{n_k+n_0-1}\bigr) \\
+& \le  \frac{C n_{k}^{-p} + An_0 n_k^{-1}}{1 + n_0/n_k} 
+\end{align*}
+
+---
+
+In both cases,
+
+- If $n_0$ is bounded, then the discrepancy decays as $\Order(n_k^{-\min(p,1)})$ as $k\to\infty$
+
+- If instead $n_0 \le \alpha n_k$, then the discrepancy is no worse than proportional to $\alpha$, i.e.
+$\Dsc\bigl(\{\vx_i\}_{i=0}^{n-1}\bigr) \lesssim \alpha$
+
+[Back to the best we can hope for](#the-best-we-can-hope-for)
