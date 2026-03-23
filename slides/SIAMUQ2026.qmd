@@ -49,7 +49,7 @@ For $\vx_0, \vx_1, \ldots \alert{\IIDsim} \Unif[0,1]^d$
 &nbsp;
 :::
 
-::: {.column width="49%"}
+::: {.column width="49%" .fragment fragment-index="1"}
 
 For [carefully]{.alert} chosen $\vx_0, \vx_1, \ldots  \alert{\LDsim} \Unif[0,1]^d$
 \begin{multline*}
@@ -90,7 +90,7 @@ fig.tight_layout()
 &nbsp;
 ::: 
 
-::: {.column width="49%"} 
+::: {.column width="49%" .fragment fragment-index="1"} 
 ```{python}
 #| echo: false
 #| fig-width: 4
@@ -186,11 +186,11 @@ The cure is to [randomize]{.alert} the sequence, not to drop points
 
 ::: {.column width="49%" .fragment fragment-index="1"}
 
-### This is a bad idea; keeping $\vx_0$
+### This is a bad idea; should keep $\vx_0$ to
 
-- Mainains balance that ensures low discrepancy
+- Maintain balance that ensures low discrepancy
 
-- Preserves the structure that allows for error bounds and stopping criteria, especially for Sobol' and lattice sequences for $n = 1, b, b^2, \ldots$
+- Preserve the structure that allows for error bounds and stopping criteria, especially for Sobol' and lattice sequences for $n = 1, b, b^2, \ldots$
 
 The LD community urges users and libraries to keep $\vx_0$ in the sequence, [(SciPy, success)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.qmc.Sobol.html) and not to skip points [(MATLAB, not yet succeeded)](https://www.mathworks.com/help/stats/sobolset.html#btd9s8e-1) 
 :::
@@ -537,10 +537,10 @@ fig.tight_layout();
 
 # Implementation {#implementation}
 
-`qmcpy` is an open source Python library for quasi-Monte Carlo methods
+[`qmcpy`](https://qmcpy.org) is an open source Python library for quasi-Monte Carlo methods (develop branch has the _latest features_)
 
-- Provides implementations of various low discrepancy sequences, including lattice and Kronecker sequences
-- Includes tools for error estimation and stopping criteria
+- Implementations of various low discrepancy sequences, including lattice and Kronecker sequences
+- Tools for error estimation and stopping criteria
 - <span id="qmcpy-pypi-impact">Loading PyPI impact metric...</span>
 - In active development with contributions from the community
 
@@ -551,15 +551,22 @@ fig.tight_layout();
 - Don't sweat it if you lose a few or have a few extra
   - If you really want higher order convergence, then use reproducing/covariance kernels to find optimalsample weights, but this takes work
 
-::: {.fragment}
+---
 
-<h3>Further work</h3> 
+### Further work
 - More efficient CBC algorithms
 - Theoretical guarantees for decay of discrepancy of Kronecker sequences by CBC
 - Extend to digital sequences with arbitrary sample sizes
 - Stopping rules based on
   - Decay of discrete Fourier coefficients of the integrand 
   - Gaussian process surrogate models of the integrand
+
+
+::: {.fragment style="position: absolute; bottom: 2.5em; left: 0; right: 0; text-align: center;"}
+
+<h3 style="margin: 0; color: var(--accent-blue); font-size: 3em;">
+Thank you!
+</h3>
 
 :::
 
