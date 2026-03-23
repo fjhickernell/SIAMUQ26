@@ -177,7 +177,7 @@ fig.tight_layout()
 :::{.fragment fragment-index="2"}
 The cure is to [randomize]{.alert} the sequence, not to drop points
 :::
-
+ 
 :::
 
 ::: {.column width="2%"}
@@ -214,15 +214,15 @@ Building on [{{< meta papers.hickrikuonuy_2012_weighted_integration.cite >}}]({{
 
 &nbsp;
 
-Suppose $\Dsc\bigl(\{\vx_i\}_{i=0}^{n_k-1}\bigr) \le C n_k^{-p}$ for a sequence of preferred sample sizes, $n_1, n_2, \ldots$: 
+Suppose $\Dsc\bigl(\{\vx_i\}_{i=0}^{n_m-1}\bigr) \le C n_m^{-p}$ for a sequence of preferred sample sizes, $n_1, n_2, \ldots$: 
 
-- If $p > 1$, then $n_{k+1} - n_k$ cannot be bounded
+- If $p > 1$, then $n_{m+1} - n_m$ cannot be bounded
 
-- If you lose/gain a bounded [number]{.alert} of data, i.e., $n = n_k \pm n_0$, then $\Dsc\bigl(\{\vx_i\}_{i=0}^{n-1}\bigr) = \Order(n_k^{-\min(p,1)})$ 
+- If you lose/gain a bounded [number]{.alert} of data, i.e., $n = n_m \pm n_0$, then $\Dsc\bigl(\{\vx_i\}_{i=0}^{n-1}\bigr) = \Order\bigl(n_m^{-\min(p,1)}\bigr)$ 
 
   - If $p \le 1$, then you do not lose any thing asymptotically
 
-  - If $p > 1$, then you still have $\Order(n_k^{-1})$ convergence
+  - If $p > 1$, then you still have $\Order(n_m^{-1})$ convergence
 
 - If you lose/gain a bounded [proportion]{.alert} of data, $\alpha$, then $\Dsc\bigl(\{\vx_i\}_{i=0}^{n-1}\bigr) \lesssim \alpha$
 
@@ -331,7 +331,7 @@ fig.tight_layout()
 
 \begin{gather*}
 \ESD \bigl (\{\vx_i\}_{i=0}^{n-1}, \cf \bigr) := \Ex\left[ \Dsc^2\bigl (\{\vx_i + \vDelta \bmod \vone \}_{i=0}^{n-1}, \cf \bigr) \right] \\ 
-\WESD (N,d) := \sum_{n=1}^N \class{alert}{n} \, \ESD \bigl (\{\vx_i\}_{i=0}^{n-1}, \cf \bigr)
+\WESD (N,d) := \sum_{n=1}^N \alert{n} \, \ESD \bigl (\{\vx_i\}_{i=0}^{n-1}, \cf \bigr)
 \end{gather*}
 
 :::
@@ -339,20 +339,21 @@ fig.tight_layout()
 ## (Weighted) expected squared discrepancies for lattice and Kronecker sequences
 
 \begin{align*}
-\textrm{ESD}\bigl (\{\phi_b(i) \vzeta \}_{i=0}^{n-1} \ \class{alert}{\text{lattice}}, \cf \bigr)
-& = - \overline{K} + \frac 1{n^2} \biggl [ n \tK(\boldsymbol{0}) +  \sum_{k=1}^{b^{\lceil \log_b n\rceil}-1} \#_n(k) \tK\bigl( \phi_b(k) \boldsymbol{\zeta}\bigr) \biggr] \\
-\textrm{ESD}\bigl (\{i \vzeta \}_{i=0}^{n-1}\ \class{alert}{\text{Kronecker}}, \cf \bigr) 
-& = - \overline{K} + \frac 1{n^2} \biggl [ n \tK(\boldsymbol{0}) + 2 \sum_{k=1}^{n -1}(n - k) \tK( k \boldsymbol{\zeta}) \biggr] \\
+\textrm{ESD}\bigl (\{\phi_b(i) \vzeta \bmod \vone \}_{i=0}^{n-1} \ \class{alert}{\text{lattice}}, \cf \bigr)
+& = - \overline{K} + \frac 1{n^2} \biggl [ n \tK(\boldsymbol{0}) +  \sum_{k=1}^{b^{\lceil \log_b n\rceil}-1} \#_n(k) \tK\bigl( \phi_b(k) \boldsymbol{\zeta} \bmod \vone \bigr) \biggr] \\
+\textrm{ESD}\bigl (\{i \vzeta \bmod \vone \}_{i=0}^{n-1}\ \class{alert}{\text{Kronecker}}, \cf \bigr) 
+& = - \overline{K} + \frac 1{n^2} \biggl [ n \tK(\boldsymbol{0}) + 2 \sum_{k=1}^{n -1}(n - k) \tK( k \boldsymbol{\zeta} \bmod \vone) \biggr] \\
 \tK(\vx) &: = \int_{[0,1]^d} K(\vx + \vy \bmod \boldsymbol{1}, 
 \vy) \, \dif \vy \qquad
 \overline{K} : = \int_{[0,1]^d} \tK(\vx) \, \dif \vx\\
-\#_n(k) &: = \mathrm{card}\bigl \{k : \phi_b(k) = \phi_b(i) - \phi_b(j) \bmod 1 \text{ s.t. } i, j, \in \{0, \ldots, n-1 \} \bigr\} \\
-\WESD (N,d)  & := \sum_{n=1}^N \class{alert}{n} \, \ESD \left (\begin{Bmatrix} \{\phi_b(i) \vzeta \}_{i=0}^{n-1} \text{ lattice} \\ \{i \vzeta \}_{i=0}^{n-1} \text{ Kronecker} \end{Bmatrix}, \cf \right) \\ 
-& \qquad \qquad \text{in } \class{alert}{\Order(N)} \text{ operations}
+\#_n(k) &: = \mathrm{card}\bigl \{k : \phi_b(k) = \phi_b(i) - \phi_b(j) \bmod 1 \\
+& \qquad \qquad \text{ s.t. } i, j, \in \{0, \ldots, n-1 \} \bigr\} \\
+\WESD (N,d)  & := \sum_{n=1}^N \alert{n} \, \ESD \left (\begin{Bmatrix} \{\phi_b(i) \vzeta \bmod \vone \}_{i=0}^{n-1} \text{ lattice} \\ \{i \vzeta \bmod \vone \}_{i=0}^{n-1} \text{ Kronecker} \end{Bmatrix}, \cf \right) \\ 
+& \qquad \qquad \text{in } \alert{\Order(N)} \text{ operations}
 \end{align*}
 
 
-## Component-by-component (CBC) constructions for the generating vector $\vzeta$ \\ assuming decaying coordinate weights $\gamma_\ell = \ell^{-2}$, $\ell=1, \ldots, d$
+## Component-by-component (CBC) constructions for the generating vector $\vzeta$ <br> assuming decaying coordinate weights $\gamma_\ell = \ell^{-2}$, $\ell=1, \ldots, d$
 
 1. For $d=1$, choose $\zeta_1$ to minimize $\textrm{WSESD}(N, d)$
 
@@ -546,9 +547,9 @@ fig.tight_layout();
 # Take-aways {#take-aways}
 
 <h3>Conclusion</h3> 
-- Keep the preferred nodes, $\{\vx_i\}_{i=0}^{n_k}$, optimal low discrepancy
+- Keep the preferred nodes, $\{\vx_i\}_{i=0}^{n_m}$, with best $n_m$ for optimal low discrepancy
 - Don't sweat it if you lose a few or have a few extra
-  - If you really want higher order convergence, then use reproducing/covariance kernels to find sample weights
+  - If you really want higher order convergence, then use reproducing/covariance kernels to find optimalsample weights, but this takes work
 
 ::: {.fragment}
 
@@ -581,6 +582,11 @@ fig.tight_layout();
 {{< meta papers.dicpil_2010_digital_nets_sequences.full >}}
 [publisher]({{< meta papers.dicpil_2010_digital_nets_sequences.publisher_url >}})
 
+[{{< meta papers.halton_1960_sequences.cite >}}]{.ref-label}
+{{< meta papers.halton_1960_sequences.full >}}
+[DOI]({{< meta papers.halton_1960_sequences.doi_url >}}) · 
+[publisher]({{< meta papers.halton_1960_sequences.publisher_url >}})
+
 [{{< meta papers.hickrikuonuy_2012_weighted_integration.cite >}}]{.ref-label}
 {{< meta papers.hickrikuonuy_2012_weighted_integration.full >}}
 [DOI]({{< meta papers.hickrikuonuy_2012_weighted_integration.doi_url >}}) ·  
@@ -589,7 +595,8 @@ fig.tight_layout();
 
 [{{< meta papers.richtmyer_1951_sequences.cite >}}]{.ref-label}
 {{< meta papers.richtmyer_1951_sequences.full >}}
-[report]({{< meta papers.richtmyer_1951_sequences.project_url >}})
+[report]({{< meta papers.richtmyer_1951_sequences.project_url >}}) · 
+*(see [Wikipedia](https://en.wikipedia.org/wiki/Robert_D._Richtmyer))*
 
 
 :::
@@ -607,7 +614,7 @@ $$
 And also that for a specific sequence of nodes, $\{\vx_i\}_{i=0}^{\infty}$ and a sequence of sample sizes, $1 \le n_1 < n_2 < \ldots$, we have better bounds on the discrepancy:
 
 $$
-c n_k^{-P} \le \Dsc\bigl(\{\vx_i\}_{i=0}^{n_k-1}\bigr) \le C n_k^{-p} \qquad k = 1, 2, \ldots
+c n_m^{-P} \le \Dsc\bigl(\{\vx_i\}_{i=0}^{n_m-1}\bigr) \le C n_m^{-p} \qquad k = 1, 2, \ldots
 $$
 
 where $0 \le p \le P \le Q$.  
@@ -635,48 +642,48 @@ which implies that
 \end{align*}
 
 
-## $n_{k+1} -  n_k$ must grow if $p > 1$
+## $n_{m+1} -  n_m$ must grow if $p > 1$
 
-If $n_- = n_{k}$, $n_+ = n_{k+1}$, and $n_0 = n_{k+1} - n_k$, then 
+If $n_- = n_{m}$, $n_+ = n_{m+1}$, and $n_0 = n_{m+1} - n_m$, then 
 
 \begin{align*}
-0 < a (n_{k+1} - n_k) ^{-Q} & \le \Dsc\bigl(\{\vx_i\}_{i=n_k}^{n_{k+1}-1}\bigr) \\
-& \le \frac{n_{k+1}}{n_{k+1} - n_k} \Dsc\bigl(\{\vx_i\}_{i=0}^{n_{k+1}-1}\bigr) + \frac{n_k}{n_{k+1} - n_k} \Dsc\bigl(\{\vx_i\}_{i=0}^{n_{k}-1}\bigr) \\
-& \le (n_{k+1} - n_k)^{-1} C (n_{k+1}^{1-p} + n_k^{1-p}) \\
-a &\le C (n_{k+1} - n_k)^{Q-1} (n_{k+1}^{1-p} + n_k^{1-p}) \\
+0 < a (n_{m+1} - n_m) ^{-Q} & \le \Dsc\bigl(\{\vx_i\}_{i=n_m}^{n_{m+1}-1}\bigr) \\
+& \le \frac{n_{m+1}}{n_{m+1} - n_m} \Dsc\bigl(\{\vx_i\}_{i=0}^{n_{m+1}-1}\bigr) + \frac{n_m}{n_{m+1} - n_m} \Dsc\bigl(\{\vx_i\}_{i=0}^{n_{m}-1}\bigr) \\
+& \le (n_{m+1} - n_m)^{-1} C (n_{m+1}^{1-p} + n_m^{1-p}) \\
+a &\le C (n_{m+1} - n_m)^{Q-1} (n_{m+1}^{1-p} + n_m^{1-p}) \\
 \end{align*}
 
-So if $1 < p <Q$, then $n_{k+1} - n_k$ must grow at least on the order of $n_k^{\frac{p-1}{Q-1}}$
+So if $1 < p <Q$, then $n_{m+1} - n_m$ must grow at least on the order of $n_m^{\frac{p-1}{Q-1}}$
 
-## $\Order\bigl(n_k^{-\min(p,1)}\bigr)$ discrepancy if we lose/gain a bounded number of data
+## $\Order\bigl(n_m^{-\min(p,1)}\bigr)$ discrepancy if we lose/gain a bounded number of data
 
 ### Losing points
 
-If $n_{+} = n_k$, and $n_- = n_k - n_0$ then 
+If $n_{+} = n_m$, and $n_- = n_m - n_0$ then 
 
 \begin{align*}
-\Dsc\bigl(\{\vx_i\}_{i=n_0}^{n_{k} -n_0 -1}\bigr)
-& \le \frac{n_{k}}{n_{k} - n_0} \Dsc\bigl(\{\vx_i\}_{i=0}^{n_{k}-1}\bigr) + \frac{n_0}{n_{k} - n_0} \Dsc\bigl(\{\vx_i\}_{i=n_k - n_0}^{n_k-1}\bigr) \\
-& \le  \frac{C n_{k}^{-p} + An_0 n_k^{-1}}{1 - n_0/n_k} 
+\Dsc\bigl(\{\vx_i\}_{i=n_0}^{n_{m} -n_0 -1}\bigr)
+& \le \frac{n_{m}}{n_{m} - n_0} \Dsc\bigl(\{\vx_i\}_{i=0}^{n_{m}-1}\bigr) + \frac{n_0}{n_{m} - n_0} \Dsc\bigl(\{\vx_i\}_{i=n_m - n_0}^{n_m-1}\bigr) \\
+& \le  \frac{C n_{m}^{-p} + An_0 n_m^{-1}}{1 - n_0/n_m} 
 \end{align*}
 
 ### Gaining points
 
-If $n_{-} = n_k$, and $n_+ = n_k +n_0$ then 
+If $n_{-} = n_m$, and $n_+ = n_m +n_0$ then 
 
 \begin{align*}
-\Dsc\bigl(\{\vx_i\}_{i=n_0}^{n_{k} + n_0 -1}\bigr)
-& \le \frac{n_{k}}{n_{k} + n_0} \Dsc\bigl(\{\vx_i\}_{i=0}^{n_{k}-1}\bigr) + \frac{n_0}{n_{k} + n_0} \Dsc\bigl(\{\vx_i\}_{i=n_k}^{n_k+n_0-1}\bigr) \\
-& \le  \frac{C n_{k}^{-p} + An_0 n_k^{-1}}{1 + n_0/n_k} 
+\Dsc\bigl(\{\vx_i\}_{i=n_0}^{n_{m} + n_0 -1}\bigr)
+& \le \frac{n_{m}}{n_{m} + n_0} \Dsc\bigl(\{\vx_i\}_{i=0}^{n_{m}-1}\bigr) + \frac{n_0}{n_{m} + n_0} \Dsc\bigl(\{\vx_i\}_{i=n_m}^{n_m+n_0-1}\bigr) \\
+& \le  \frac{C n_{m}^{-p} + An_0 n_m^{-1}}{1 + n_0/n_m} 
 \end{align*}
 
 ---
 
 In both cases,
 
-- If $n_0$ is bounded, then the discrepancy decays as $\Order(n_k^{-\min(p,1)})$ as $k\to\infty$
+- If $n_0$ is bounded, then the discrepancy decays as $\Order(n_m^{-\min(p,1)})$ as $k\to\infty$
 
-- If instead $n_0 \le \alpha n_k$, then the discrepancy is no worse than proportional to $\alpha$, i.e.
+- If instead $n_0 \le \alpha n_m$, then the discrepancy is no worse than proportional to $\alpha$, i.e.
 $\Dsc\bigl(\{\vx_i\}_{i=0}^{n-1}\bigr) \lesssim \alpha$
 
 [Back to the best we can hope for](#the-best-we-can-hope-for)
