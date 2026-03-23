@@ -54,7 +54,8 @@ For $\vx_0, \vx_1, \ldots \alert{\IIDsim} \Unif[0,1]^d$
 For [carefully]{.alert} chosen $\vx_0, \vx_1, \ldots  \alert{\LDsim} \Unif[0,1]^d$
 \begin{multline*}
 \left\lvert \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac{1}{n} \sum_{i=0}^{n-1} f(\vx_i) \right\rvert
-\\ \le \underbracket{\Dsc\bigl(\{\vx_i\}_{i=0}^{n-1}\bigr)}_{\Order(\alert{n^{-1+\delta}}) \text{ or \class{alert}{better}}} \, \lVert f \rVert_{\cf}
+\\ \le \underbracket{\Dsc\bigl(\{\vx_i\}_{i=0}^{n-1}\bigr)}_{\Order(\alert{n^{-1+\delta}}) \text{ or \class{alert}{better}}} \, \lVert f \rVert_{\cf} \ 
+\mathlink{https://arxiv.org/abs/2502.03644}{HKS26}
 \end{multline*}
 
 :::
@@ -594,6 +595,16 @@ Thank you!
 [DOI]({{< meta papers.halton_1960_sequences.doi_url >}}) · 
 [publisher]({{< meta papers.halton_1960_sequences.publisher_url >}})
 
+[{{< meta papers.hickirsor_2026_qmc_tutorial.cite >}}]{.ref-label}
+{{< meta papers.hickirsor_2026_qmc_tutorial.full >}}
+[arXiv]({{< meta papers.hickirsor_2026_qmc_tutorial.arxiv_url >}})
+
+:::
+
+## References (cont'd)
+
+::: {.refs}
+
 [{{< meta papers.hickrikuonuy_2012_weighted_integration.cite >}}]{.ref-label}
 {{< meta papers.hickrikuonuy_2012_weighted_integration.full >}}
 [DOI]({{< meta papers.hickrikuonuy_2012_weighted_integration.doi_url >}}) ·  
@@ -605,8 +616,9 @@ Thank you!
 [report]({{< meta papers.richtmyer_1951_sequences.project_url >}}) · 
 *(see [Wikipedia](https://en.wikipedia.org/wiki/Robert_D._Richtmyer))*
 
-
 :::
+
+
 
 
 # Proofs {#proofs}
