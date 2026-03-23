@@ -54,8 +54,7 @@ For $\vx_0, \vx_1, \ldots \alert{\IIDsim} \Unif[0,1]^d$
 For [carefully]{.alert} chosen $\vx_0, \vx_1, \ldots  \alert{\LDsim} \Unif[0,1]^d$
 \begin{multline*}
 \left\lvert \int_{[0,1]^d} f(\vx) \, \dif \vx - \frac{1}{n} \sum_{i=0}^{n-1} f(\vx_i) \right\rvert
-\\ \le \underbracket{\Dsc\bigl(\{\vx_i\}_{i=0}^{n-1}\bigr)}_{\Order(\alert{n^{-1+\delta}}) \text{ or \class{alert}{better}}} \, \lVert f \rVert_{\cf} \ 
-\text{HKS26}
+\\ \le \underbracket{\Dsc\bigl(\{\vx_i\}_{i=0}^{n-1}\bigr)}_{\Order(\alert{n^{-1+\delta}}) \text{ or \class{alert}{better}}} \, \lVert f \rVert_{\cf} \ \href{https://arxiv.org/abs/2502.03644}{\text{HKS26}}
 \end{multline*}
 
 :::
