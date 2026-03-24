@@ -4,8 +4,8 @@ author: "Fred J. Hickernell"
 subtitle: |
   Illinois Institute of Technology, hickernell@illinoistech.edu
 
-  Joint work with Claude Hall, Jr., Jimmy Nguyen, Alexander Pride, Aleksei G. Sorokin, and <br>
-  the <span class="pkg">qmcpy</span> development team
+  Joint work with Claude Hall, Jr., Jimmy Nguyen, Larysa Matiukha, Alexander Pride, <br>
+  Aleksei G. Sorokin, and the <span class="pkg">qmcpy</span> development team
 
   Supported in part by NSF-DMS-2316011 &nbsp; &nbsp;  ·  &nbsp; &nbsp; Thanks to the organizers
 
