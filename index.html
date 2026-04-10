@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -39,7 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9d079bc3232231e48bc095d881c938fd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -177,11 +177,18 @@ ul.task-list li input[type="checkbox"] {
         vol:   "{\\operatorname{vol}}",
         bias:  "{\\operatorname{bias}}",
         RR:   "{\\mathcal{R}}",
+        RSS:  "{\\operatorname{RSS}}",
+        SST:  "{\\operatorname{SST}}",
+        SSR:  "{\\operatorname{SSR}}",
+        SSB:  "{\\operatorname{SSB}}",
+        SSW:  "{\\operatorname{SSW}}",
+        MSB:  "{\\operatorname{MSB}}",
+        MSW:  "{\\operatorname{MSW}}",
 
         Bern:  "{\\operatorname{Bern}}",
         Bin:   "{\\operatorname{Bin}}",
         Unif:  "{\\operatorname{Unif}}",
-        Norm:  "{\\operatorname{N}}",
+        Norm:  "{\\operatorname{Norm}}",
         Exp:   "{\\operatorname{Exp}}",
         Gam:   "{\\operatorname{Gamma}}",
         Pois:  "{\\operatorname{Pois}}",
@@ -206,6 +213,8 @@ ul.task-list li input[type="checkbox"] {
         col:   "{\\operatorname{col}}",
         nullspace: "{\\operatorname{null}}",
         Order: "{\\mathcal{O}}",
+        logit: "{\\operatorname{logit}}",
+        probit: "{\\operatorname{probit}}",
 
         IIDsim: "\\mathrel{\\stackrel{\\mathrm{IID}}{\\sim}}",
         LDsim:  "\\mathrel{\\stackrel{\\mathrm{LD}}{\\sim}}",
@@ -225,36 +234,77 @@ ul.task-list li input[type="checkbox"] {
         ip:   ["{\\left\\langle #1, #2 \\right\\rangle}", 2],
         dim:   "{\\operatorname{dim}}",
         df:   "{\\mathrm{df}}",
+        SE:   "{\\operatorname{SE}}",
 
 
         bvec: ["{\\boldsymbol{#1}}", 1],
         avec: ["{\\vec{#1}}", 1],
         vecsym: ["{\\boldsymbol{#1}}", 1],
 
+        va:  "{\\boldsymbol{a}}",
         vb:  "{\\boldsymbol{b}}",
+        vc:  "{\\boldsymbol{c}}",
+        vd:  "{\\boldsymbol{d}}",
+        ve:  "{\\boldsymbol{e}}",
         vf:  "{\\boldsymbol{f}}",
-        tvf: "{\\widetilde{\\boldsymbol{f}}}",
+        vg:  "{\\boldsymbol{g}}",
+        vh:  "{\\boldsymbol{h}}",
+        vi:  "{\\boldsymbol{i}}",
+        vj:  "{\\boldsymbol{j}}",
         vk:  "{\\boldsymbol{k}}",
-        vQ:  "{\\boldsymbol{Q}}",
+        vl:  "{\\boldsymbol{l}}",
+        vm:  "{\\boldsymbol{m}}",
+        vn:  "{\\boldsymbol{n}}",
+        vo:  "{\\boldsymbol{o}}",
+        vp:  "{\\boldsymbol{p}}",
+        vq:  "{\\boldsymbol{q}}",
+        vr:  "{\\boldsymbol{r}}",
+        vs:  "{\\boldsymbol{s}}",
         vt:  "{\\boldsymbol{t}}",
-        vT:  "{\\boldsymbol{T}}",
+        vu:  "{\\boldsymbol{u}}",
+        vv:  "{\\boldsymbol{v}}",
+        vw:  "{\\boldsymbol{w}}",
         vx:  "{\\boldsymbol{x}}",
-        vX:  "{\\boldsymbol{X}}",
         vy:  "{\\boldsymbol{y}}",
-        vY:  "{\\boldsymbol{Y}}",
         vz:  "{\\boldsymbol{z}}",
-        vZ:  "{\\boldsymbol{Z}}",
-        tvy: "{\\widetilde{\\boldsymbol{y}}}",
-        vY:  "{\\boldsymbol{Y}}",
-        vz:  "{\\boldsymbol{z}}",
-        vZ:  "{\\boldsymbol{Z}}",
-        
 
+        vA:  "{\\boldsymbol{A}}",
+        vB:  "{\\boldsymbol{B}}",
+        vC:  "{\\boldsymbol{C}}",
+        vD:  "{\\boldsymbol{D}}",
+        vE:  "{\\boldsymbol{E}}",
+        vF:  "{\\boldsymbol{F}}",
+        vG:  "{\\boldsymbol{G}}",
+        vH:  "{\\boldsymbol{H}}",
+        vI:  "{\\boldsymbol{I}}",
+        vJ:  "{\\boldsymbol{J}}",
+        vK:  "{\\boldsymbol{K}}",
+        vL:  "{\\boldsymbol{L}}",
+        vM:  "{\\boldsymbol{M}}",
+        vN:  "{\\boldsymbol{N}}",
+        vO:  "{\\boldsymbol{O}}",
+        vP:  "{\\boldsymbol{P}}",
+        vQ:  "{\\boldsymbol{Q}}",
+        vR:  "{\\boldsymbol{R}}",
+        vS:  "{\\boldsymbol{S}}",
+        vT:  "{\\boldsymbol{T}}",
+        vU:  "{\\boldsymbol{U}}",
+        vV:  "{\\boldsymbol{V}}",
+        vW:  "{\\boldsymbol{W}}",
+        vX:  "{\\boldsymbol{X}}",
+        vY:  "{\\boldsymbol{Y}}",
+        vZ:  "{\\boldsymbol{Z}}",
+
+        
+        tvf: "{\\widetilde{\\boldsymbol{f}}}",
+        tvy: "{\\widetilde{\\boldsymbol{y}}}",
+        
         tg:  "{\\widetilde{g}}",
         tK:  "{\\widetilde{K}}",
         tX:  "{\\widetilde{X}}",
         tY:  "{\\widetilde{Y}}",
         tZ:  "{\\widetilde{Z}}",
+        tildeh: "{\\widetilde{h}}",
 
         valpha: "{\\boldsymbol{\\alpha}}",
         vbeta:  "{\\boldsymbol{\\beta}}",
@@ -275,7 +325,9 @@ ul.task-list li input[type="checkbox"] {
         vnu:     "{\\boldsymbol{\\nu}}",
         vzeta:   "{\\boldsymbol{\\zeta}}",
 
+        mA: "{\\mathsf{A}}",
         mX: "{\\mathsf{X}}",
+        mW: "{\\mathsf{W}}",
         mP: "{\\mathsf{P}}",
         mQ: "{\\mathsf{Q}}",
         mR: "{\\mathsf{R}}",
@@ -289,6 +341,7 @@ ul.task-list li input[type="checkbox"] {
         hvbeta: "{\\widehat{\\boldsymbol{\\beta}}}",
         hlambda: "{\\widehat{\\lambda}}",
         hmu:    "{\\widehat{\\mu}}",
+        hvmu:   "{\\widehat{\\boldsymbol{\\mu}}}",
         hsigma: "{\\widehat{\\sigma}}",
         hSigma: "{\\widehat{\\Sigma}}",
         hp:    "{\\widehat{p}}",
@@ -297,6 +350,7 @@ ul.task-list li input[type="checkbox"] {
         hY:     "{\\widehat{Y}}",
         hvY:    "{\\widehat{\\boldsymbol{Y}}}",
         hZ:     "{\\widehat{Z}}",
+        hveps:   "{\\widehat{\\varepsilon}}",
         hvveps: "{\\widehat{\\boldsymbol{\\varepsilon}}}",
 
         ct: "{\\mathcal{T}}",

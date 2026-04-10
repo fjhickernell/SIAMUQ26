@@ -1,7 +1,9 @@
 # Least Squares Linear Regression {#lsqregress}
 
-- Model: $Y = \vx^\top \vbeta + \varepsilon \qquad$ with $\Ex(\varepsilon)=0,
-\quad \var(\varepsilon)=\sigma^2$
+[({{< meta texts.cb.initials >}} §11.3; {{< meta texts.wms.initials >}} §11.3–11.4, 11.10–11.11)]{.small}
+
+- Model: $Y = \underbrace{\vx^\top \vbeta}_{\mu(\vx)} + \varepsilon \quad$ with $\Ex(\varepsilon)=0$,
+$\var(\varepsilon)=\sigma^2$
 
   - $x_j$ may be a variable or a function of variables
 
@@ -177,7 +179,7 @@ plt.show()
 
 ## Unbiasedness of estimators
 
-Recall that $Y = \mX \vbeta + \vveps$, with $\Ex(\vveps)=0, \ \cov(\vveps)=\sigma^2 \mI$, where $\mX$ is fixed and of full column rank
+Recall that $Y = \mX \vbeta + \vveps$ with $\Ex(\vveps)=0$, $\cov(\vveps)=\sigma^2 \mI$, where $\mX$ is fixed and of full column rank
 
 ### Unbiasedness of $\hvbeta$ and $\hmu(\vx)$
 
@@ -217,9 +219,9 @@ Therefore $\Ex\bigl(\lVert \hvveps \rVert^2\bigr)
 = \sigma^2 (n-d)
 $
 and so 
-$$
+\begin{multline*}
 S^2 := \frac 1{n-d} \sum_{i=1}^{n} \lvert Y_i - \vx_i^\top \hvbeta \rvert^2
 = \frac{\lVert \hvveps \rVert^2}{n-d}
-= \frac{1}{n-d}\,\vY^\top(\mI-\mP)\vY \quad \text{
-is an \class{alert}{unbiased} estimator of $\sigma^2$}
-$$
+= \frac{\lVert (\mI-\mP)\vY \rVert^2 }{n-d} = \frac{\lVert (\mI-\mP)\vveps \rVert^2 }{n-d} \\
+\text{is an \class{alert}{unbiased} estimator of $\sigma^2$}
+\end{multline*}
